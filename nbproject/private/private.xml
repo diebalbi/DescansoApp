@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fido/Documents/NetBeansProjects/DescansoApp/DescansoApp/src/DescansoApp/dominio/Ciudad.java</file>
-            <file>file:/C:/Users/Fido/Documents/NetBeansProjects/DescansoApp/DescansoApp/src/DescansoApp/herramientas/ArchivoGrabacion.java</file>
-            <file>file:/C:/Users/Fido/Documents/NetBeansProjects/DescansoApp/DescansoApp/src/DescansoApp/herramientas/ArchivoLectura.java</file>
-            <file>file:/C:/Users/Fido/Documents/NetBeansProjects/DescansoApp/DescansoApp/src/DescansoApp/herramientas/EsNumero.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/test/turismoApp/dominio/ComercioActividadTest.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/test/turismoApp/dominio/ViajeTest.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/test/turismoApp/dominio/CiudadTest.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/test/turismoApp/dominio/EventoTest.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/test/turismoApp/dominio/SistemaTest.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/src/DescansoApp/dominio/Ciudad.java</file>
+            <file>file:/C:/Users/Fido/Documents/DescansoApp/src/DescansoApp/Informacion.java</file>
         </group>
     </open-files>
 </project-private>

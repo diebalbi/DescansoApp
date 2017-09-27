@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Sistema;
 import descansoApp.herramientas.TipoCA;
+import javax.swing.JComponent;
 
 public class pnlDondeQue extends javax.swing.JPanel {
 
@@ -29,7 +30,7 @@ public class pnlDondeQue extends javax.swing.JPanel {
         scroll2.setOpaque(false);
         scroll2.getViewport().setOpaque(false);
         scroll2.setBorder(null);
-        ((javax.swing.DefaultListCellRenderer) lstFiltros.getCellRenderer()).setOpaque(false);
+        ((JComponent) lstFiltros.getCellRenderer()).setOpaque(false);
 
         modelo = unModelo;
         ciudad = unaCiudad;

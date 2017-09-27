@@ -1,14 +1,16 @@
-package descansoApp.dominio;
+package turismoApp.dominio;
 
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Ciudad;
 import descansoApp.herramientas.TipoCA;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CiudadTest {
+    
+    public CiudadTest(){   
+    }
     
     @Test
     public void testGetNombre() {
@@ -18,11 +20,11 @@ public class CiudadTest {
         
         String expResult = "Fray Bentos";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
-     public void testSetNombre() {
+    public void testSetNombre() {
         System.out.println("Set Nombre");
         String nombre = "Fray Bentos";
         Ciudad instance = new Ciudad();
@@ -30,7 +32,7 @@ public class CiudadTest {
         
         String expResult = "Fray Bentos";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     @Test
     public void testGetDescripcion() {
@@ -41,7 +43,7 @@ public class CiudadTest {
         
         String expResult = "Des";
         String result = instance.getDescripcion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
      
     @Test
@@ -53,7 +55,7 @@ public class CiudadTest {
         
         String expResult = "Des";
         String result = instance.getDescripcion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -65,7 +67,7 @@ public class CiudadTest {
         
         String expResult = "Informacion";
         String result = instance.getInfoGral();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -78,7 +80,7 @@ public class CiudadTest {
         
         String expResult = "Informacion";
         String result = instance.getInfoGral();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -90,7 +92,7 @@ public class CiudadTest {
         
         boolean expResult = false;
         boolean result = instance.perteneceComercioActividad(TipoCA.alojamiento, cA);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -103,7 +105,7 @@ public class CiudadTest {
         
         boolean expResult = true;
         boolean result = instance.perteneceComercioActividad(TipoCA.alojamiento, cA);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -117,7 +119,7 @@ public class CiudadTest {
         
         ComercioActividad expResult= new ComercioActividad("actividad", null, TipoCA.actividad, null, null, null, null, null, null);
         ComercioActividad result= instance.getActividades().get(0);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
        
@@ -132,7 +134,7 @@ public class CiudadTest {
         ArrayList<ComercioActividad> expResult = new ArrayList();
         expResult.add(cA);
         ArrayList<ComercioActividad> result = instance.getActividades();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -146,7 +148,7 @@ public class CiudadTest {
         ArrayList<ComercioActividad> expResult = new ArrayList();
         expResult.add(cA);
         ArrayList<ComercioActividad> result = instance.getEstGastronomicos();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -160,7 +162,7 @@ public class CiudadTest {
         ArrayList<ComercioActividad> expResult = new ArrayList();
         expResult.add(cA);
         ArrayList<ComercioActividad> result = instance.getAlojamientos();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -173,7 +175,7 @@ public class CiudadTest {
         
         boolean expResult = false;
         boolean result = c1.equals(c2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     @Test
     public void testEquals2() {
@@ -185,7 +187,7 @@ public class CiudadTest {
         
         boolean expResult = true;
         boolean result = c1.equals(c2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     @Test
     public void testAgregarImagen(){
@@ -197,10 +199,8 @@ public class CiudadTest {
        
         String expResult= "basedatos/fraybentos1.jpg";
         String aux = instance.getImagenes().get(0).getDescription();
-        String [] result= aux.toLowerCase().split("/turismoapp/");
+        String [] result = aux.toLowerCase().split("/descansoapp/");
         assertEquals(expResult, result[2]);
-        
-    
     }
     
     @Test
@@ -213,7 +213,7 @@ public class CiudadTest {
        
         String expResult= "basedatos/fraybentos2.jpg";
         String aux = instance.getImagenes().get(0).getDescription();
-        String [] result= aux.toLowerCase().split("/turismoapp/");
+        String [] result = aux.toLowerCase().split("/descansoapp/");
         assertEquals(expResult, result[2]);
         
     }

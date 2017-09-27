@@ -1,4 +1,4 @@
-package descansoApp.dominio;
+package turismoApp.dominio;
 
 import descansoApp.dominio.Evento;
 import descansoApp.dominio.Viaje;
@@ -18,7 +18,7 @@ public class ViajeTest {
 
         String expResult = "Viaje";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ViajeTest {
 
         String expResult = "Viaje";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ViajeTest {
 
         Calendar expResult = new GregorianCalendar(2013, 11, 2);
         Calendar result = instance.getFechaI();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ViajeTest {
         
         String expResult = "La fecha de inicio del viaje debe ser la actual o una futura.";
         String result = error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class ViajeTest {
 
         Calendar expResult = new GregorianCalendar(2013, 11, 17);
         Calendar result = instance.getFechaF();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class ViajeTest {
 
         Calendar expResult = new GregorianCalendar(2013, 11, 15);
         Calendar result = instance.getFechaF();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class ViajeTest {
         
         String expResult= "La fecha final debe ser mayor a la fecha de inicio.";
         String result = error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -119,7 +119,7 @@ public class ViajeTest {
         ArrayList<Evento> expResult = new ArrayList();
         expResult.add(unEvento);
         ArrayList<Evento> result = instance.getItinerario();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -133,7 +133,7 @@ public class ViajeTest {
         ArrayList<Evento> expResult = new ArrayList();
         expResult.add(unEvento);
         ArrayList<Evento> result = instance.getItinerario();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -155,7 +155,7 @@ public class ViajeTest {
 
         String expResult = "El nombre del evento ya existe. Por favor ingrese uno nuevo.";
         String result = error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -168,7 +168,7 @@ public class ViajeTest {
 
         boolean expResult = true;
         boolean result = instance.eliminarEvento(unEvento);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -180,7 +180,7 @@ public class ViajeTest {
 
         boolean expResult = false;
         boolean result = instance.eliminarEvento(unEvento);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -193,7 +193,7 @@ public class ViajeTest {
 
         boolean expResult = true;
         boolean result = instance.pertenece(unEvento);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -205,7 +205,7 @@ public class ViajeTest {
 
         boolean expResult = false;
         boolean result = instance.pertenece(unEvento);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -219,7 +219,7 @@ public class ViajeTest {
 
         String expResult = " (03/12/2015 - 05/12/2015)";
         String result = v1.toString();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     
@@ -234,10 +234,7 @@ public class ViajeTest {
 
         String expResult = " (03/06/2015 - 15/09/2015)";
         String result = v1.fechaToString();
-        assertTrue(true);
-        
-    
-    
+        assertEquals(expResult, result);
     }
     
 
@@ -251,7 +248,7 @@ public class ViajeTest {
 
         boolean expResult = false;
         boolean result = v1.equals(v2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -264,6 +261,6 @@ public class ViajeTest {
 
         boolean expResult = true;
         boolean result = v1.equals(v2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 }

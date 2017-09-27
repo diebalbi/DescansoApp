@@ -1,9 +1,7 @@
-package descansoApp.dominio;
+package turismoApp.dominio;
 
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.herramientas.TipoCA;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import org.junit.Test;
 import static descansoApp.herramientas.TipoCA.*;
 import static org.junit.Assert.*;
@@ -20,7 +18,7 @@ public class ComercioActividadTest {
         
         String expResult = "ComercioActividad";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
      @Test
@@ -32,7 +30,7 @@ public class ComercioActividadTest {
         
         String expResult = "ComercioActividad";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -43,7 +41,7 @@ public class ComercioActividadTest {
 
         String expResult = "Aqui va el detalle";
         String result = instance.getDetalles();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     
@@ -56,7 +54,7 @@ public class ComercioActividadTest {
         
         String expResult = "Aqui va el detalle";
         String result = instance.getDetalles();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -66,7 +64,7 @@ public class ComercioActividadTest {
 
         TipoCA expResult = alojamiento;
         TipoCA result= instance.getTipo();
-        assertTrue(true);  
+        assertEquals(expResult, result); 
     }
     
     @Test
@@ -78,7 +76,7 @@ public class ComercioActividadTest {
 
         TipoCA expResult = alojamiento;
         TipoCA result= instance.getTipo();
-        assertTrue(true);  
+        assertEquals(expResult, result);  
     }
     
     @Test
@@ -89,7 +87,7 @@ public class ComercioActividadTest {
 
         String expResult = "Hotel";
         String result= instance.getCategoria();
-        assertTrue(true);  
+        assertEquals(expResult, result);  
     }
     
      @Test
@@ -101,7 +99,7 @@ public class ComercioActividadTest {
        
         String expResult = "Hotel";
         String result= instance.getCategoria();
-        assertTrue(true);  
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -113,10 +111,10 @@ public class ComercioActividadTest {
         
         String expResult = "Lunes a Viernes de 06:00 a 22:00 ";
         String result = instance.getHorario();
-        assertTrue(true);   
+        assertEquals(expResult, result);  
     }
     
-       @Test
+    @Test
     public void testSetHorario() {
         System.out.println("Set Horario");
         String horario= "Lunes a Viernes de 06:00 a 22:00 ";
@@ -125,7 +123,7 @@ public class ComercioActividadTest {
         
         String expResult = "Lunes a Viernes de 06:00 a 22:00 ";
         String result = instance.getHorario();
-        assertTrue(true);   
+        assertEquals(expResult, result);   
     }
     
     @Test
@@ -137,7 +135,7 @@ public class ComercioActividadTest {
         
         String expResult = "18 de julio c/ Ejido 1850";
         String result = instance.getUbicacion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     
@@ -150,7 +148,7 @@ public class ComercioActividadTest {
         
         String expResult = "18 de julio c/ Ejido 1850";
         String result = instance.getUbicacion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -161,7 +159,7 @@ public class ComercioActividadTest {
 
         String expResult = "555-589-874";
         String result = instance.getTelefono();
-        assertTrue(true);   
+        assertEquals(expResult, result); 
     }
     
     @Test
@@ -173,7 +171,7 @@ public class ComercioActividadTest {
         
         String expResult = "555-589-874";
         String result = instance.getTelefono();
-        assertTrue(true);   
+        assertEquals(expResult, result);   
     }
 
     @Test
@@ -184,7 +182,7 @@ public class ComercioActividadTest {
 
         String expResult="www.alojamiento.com";
         String result= instance.getWeb();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -196,7 +194,7 @@ public class ComercioActividadTest {
         
         String expResult="www.alojamiento.com";
         String result= instance.getWeb();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -207,7 +205,7 @@ public class ComercioActividadTest {
 
         String expResult = "1000,5";
         String result = instance.getPrecio();
-        assertTrue(true); 
+        assertEquals(expResult, result); 
     }
     
     @Test
@@ -219,7 +217,7 @@ public class ComercioActividadTest {
         
         String expResult = "1000,5";
         String result = instance.getPrecio();
-        assertTrue(true); 
+        assertEquals(expResult, result); 
     }
     
     @Test
@@ -232,7 +230,7 @@ public class ComercioActividadTest {
        
         String expResult= "basedatos/fiesta1.jpg";
         String aux = instance.getImagenes().get(0).getDescription();
-        String [] result= aux.toLowerCase().split("/turismoapp/");
+        String [] result= aux.toLowerCase().split("/descansoapp/");
         assertEquals(expResult, result[2]);
     }
     
@@ -247,7 +245,7 @@ public class ComercioActividadTest {
        
         String expResult= "basedatos/fiesta1.jpg";
         String aux = instance.getImagenes().get(0).getDescription();
-        String [] result= aux.toLowerCase().split("/turismoapp/");
+        String [] result= aux.toLowerCase().split("/descansoapp/");
         assertEquals(expResult, result[2]);
         
         
@@ -263,9 +261,10 @@ public class ComercioActividadTest {
         
         boolean expResult = false;
         boolean result = ca1.equals(ca2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
+    @Test
     public void testEquals2() {
         System.out.println("equals(compara dos comercioActividades con nombres iguales)");
         ComercioActividad ca1= new ComercioActividad();
@@ -275,7 +274,7 @@ public class ComercioActividadTest {
         
         boolean expResult = true;
         boolean result = ca1.equals(ca2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -288,7 +287,7 @@ public class ComercioActividadTest {
         
         int expResult = -1;
         int result = ca1.compareTo(ca2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -301,7 +300,7 @@ public class ComercioActividadTest {
         
         int expResult = 1;
         int result = ca2.compareTo(ca1);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -314,6 +313,6 @@ public class ComercioActividadTest {
         
         int expResult = 0;
         int result = ca1.compareTo(ca2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 }

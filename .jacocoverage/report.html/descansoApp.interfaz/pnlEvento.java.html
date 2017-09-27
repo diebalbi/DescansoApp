@@ -210,9 +210,9 @@ public class pnlEvento extends javax.swing.JPanel {
 <span class="nc" id="L210">    }//GEN-LAST:event_lblGuardarMouseExited</span>
 
     private void lblGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardarMouseClicked
-<span class="nc bnc" id="L213" title="All 18 branches missed.">        if (txtNombre.getText().length() &gt; 0 &amp;&amp; txtUbicacion.getText().length() &gt; 0 &amp;&amp; txtDescripcion.getText().length() &gt; 0</span>
-                &amp;&amp; txtHoraIHoras.getText().length() &gt; 0 &amp;&amp; txtHoraIMinutos.getText().length() &gt; 0 &amp;&amp; txtHoraFHoras.getText().length() &gt; 0
-                &amp;&amp; txtHoraFMinutos.getText().length() &gt; 0 &amp;&amp; dChosserFechaI != null &amp;&amp; dChosserFechaF != null) {
+<span class="nc bnc" id="L213" title="All 6 branches missed.">        if (txtNombre.getText().length() &gt; 0 &amp;&amp; txtUbicacion.getText().length() &gt; 0 &amp;&amp; txtDescripcion.getText().length() &gt; 0</span>
+<span class="nc bnc" id="L214" title="All 6 branches missed.">                &amp;&amp; txtHoraIHoras.getText().length() &gt; 0 &amp;&amp; txtHoraIMinutos.getText().length() &gt; 0 &amp;&amp; txtHoraFHoras.getText().length() &gt; 0</span>
+<span class="nc bnc" id="L215" title="All 6 branches missed.">                &amp;&amp; txtHoraFMinutos.getText().length() &gt; 0 &amp;&amp; dChosserFechaI != null &amp;&amp; dChosserFechaF != null) {</span>
 
             Evento evento;
 <span class="nc bnc" id="L218" title="All 2 branches missed.">            if (modEvento == null) {</span>
@@ -226,8 +226,8 @@ public class pnlEvento extends javax.swing.JPanel {
 <span class="nc" id="L226">            evento.setDescripcion(txtDescripcion.getText());</span>
 <span class="nc" id="L227">            evento.setCiudad(ciudad);</span>
 
-<span class="nc bnc" id="L229" title="All 8 branches missed.">            if (!esNumero(txtHoraIHoras.getText()) || !esNumero(txtHoraIMinutos.getText())</span>
-                    || !esNumero(txtHoraFHoras.getText()) || !esNumero(txtHoraFMinutos.getText())) {
+<span class="nc bnc" id="L229" title="All 4 branches missed.">            if (!esNumero(txtHoraIHoras.getText()) || !esNumero(txtHoraIMinutos.getText())</span>
+<span class="nc bnc" id="L230" title="All 4 branches missed.">                    || !esNumero(txtHoraFHoras.getText()) || !esNumero(txtHoraFMinutos.getText())) {</span>
 <span class="nc" id="L231">                JOptionPane.showMessageDialog(this, &quot;Formato incorrecto de la hora ingresada.&quot;, &quot;Error&quot;, JOptionPane.ERROR_MESSAGE);</span>
 
             } else {

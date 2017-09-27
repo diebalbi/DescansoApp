@@ -17,7 +17,7 @@ public class EventoTest {
 
         String expResult = "Evento";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -29,7 +29,7 @@ public class EventoTest {
         
         String expResult = "Evento";
         String result = instance.getNombre();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class EventoTest {
        
         Calendar expResult = new GregorianCalendar(2015, 9, 20,21,30);
         Calendar result = instance.getFechaHoraI();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -59,7 +59,7 @@ public class EventoTest {
         
         String expResult = "La fecha de inicio del evento debe ser la actual o una futura.";
         String result= error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
    
     @Test
@@ -79,7 +79,7 @@ public class EventoTest {
         
         String expResult= "El evento esta programado para hoy, entonces la hora de inicio debe ser mayor a la actual.";
         String result = error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class EventoTest {
         
         Calendar expResult = new GregorianCalendar(2013, 11, 19, 16, 16);
         Calendar result = instance.getFechaHoraF();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -106,12 +106,12 @@ public class EventoTest {
         try {
             instance.setFechaHoraF(fechaHoraI, fechaHoraF);
         } catch (Exception e) {
-            error=e;
+            error = e;
         }
         
         String expResult="La fecha final debe ser mayor a la fecha de inicio.";
         String result= error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test 
@@ -130,7 +130,7 @@ public class EventoTest {
         
         String expResult ="La hora de finalización debe ser mayor a la hora de inicio del evento.";
         String result= error.getMessage();
-        assertTrue(true);
+        assertEquals(expResult, result);
         
     }
     
@@ -142,9 +142,10 @@ public class EventoTest {
         
         String expResult = "Aqui va la descripcion";
         String result = instance.getDescripcion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
+    @Test
     public void testSetDescripcion() {
         System.out.println("Set Descripcion");
         String descripcion = "Aqui va la descripcion";
@@ -153,7 +154,7 @@ public class EventoTest {
         
         String expResult = "Aqui va la descripcion";
         String result = instance.getDescripcion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -164,7 +165,7 @@ public class EventoTest {
 
         String expResult = "18 de julio 2080";
         String result = instance.getUbicacion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -176,7 +177,7 @@ public class EventoTest {
         
         String expResult = "18 de julio 2080";
         String result = instance.getUbicacion();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -187,10 +188,10 @@ public class EventoTest {
         
         Ciudad expResult = c;
         Ciudad result = instance.getCiudad();
-        assertTrue(true); 
+        assertEquals(expResult, result); 
     }
     
-     @Test
+    @Test
     public void testSetCiudad() {
         System.out.println("Set Ciudad");
         Evento instance = new Evento();
@@ -200,7 +201,7 @@ public class EventoTest {
         
         Ciudad expResult = c;
         Ciudad result = instance.getCiudad();
-        assertTrue(true); 
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -214,7 +215,7 @@ public class EventoTest {
 
         String expResult = "10:08 - Evento (Ubicacion)";
         String result = e.toString();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     
@@ -228,7 +229,7 @@ public class EventoTest {
 
         String expResult = "10:08";
         String result = e.horaInicioToString();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test 
@@ -241,7 +242,7 @@ public class EventoTest {
          
          String expResult= "20:30";
          String result = e.horaFinToString();
-         assertTrue(true);
+         assertEquals(expResult, result);
     }
     
     @Test
@@ -253,8 +254,7 @@ public class EventoTest {
         
         String expResult= "03/11/2015";
         String result= e.fechaInicioToString();
-        assertTrue(true);
-    
+        assertEquals(expResult, result);
     }
     
     @Test 
@@ -267,7 +267,7 @@ public class EventoTest {
         
         String expResult = "15/06/2015";
         String result = e.fechaFinToString();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -280,8 +280,9 @@ public class EventoTest {
         
         boolean expResult = false;
         boolean result = e1.equals(e2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
+    
     @Test
     public void testEquals2() {
         System.out.println("equals(compara dos eventos con nombres iguales)");
@@ -292,8 +293,9 @@ public class EventoTest {
         
         boolean expResult = true;
         boolean result = e1.equals(e2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
+    
     @Test
     public void testCompareTo() throws Exception {
         System.out.println("compareTo(compara dos eventos con fecha iguales)");
@@ -306,7 +308,7 @@ public class EventoTest {
         
         int expResult = 0;
         int result = e1.compareTo(e2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
      @Test
@@ -321,7 +323,7 @@ public class EventoTest {
         
         int expResult = 1;
         int result = e1.compareTo(e2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -336,6 +338,6 @@ public class EventoTest {
         
         int expResult = -1;
         int result = e1.compareTo(e2);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 }

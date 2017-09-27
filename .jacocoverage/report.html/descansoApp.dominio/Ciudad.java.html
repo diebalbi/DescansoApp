@@ -23,11 +23,11 @@ public class Ciudad implements Serializable {
 <span class="nc" id="L23">    }</span>
 
     public String getDescripcion() {
-<span class="nc" id="L26">        return &quot;&quot;;</span>
+<span class="nc" id="L26">        return descripcion;</span>
     }
 
     public void setDescripcion(String descripcion) {
-<span class="nc" id="L30">        this.descripcion = &quot;&quot;;</span>
+<span class="nc" id="L30">        this.descripcion = descripcion;</span>
 <span class="nc" id="L31">    }</span>
 
     public String getInfoGral() {
@@ -35,7 +35,7 @@ public class Ciudad implements Serializable {
     }
 
     public void setInfoGral(String infoGral) {
-<span class="nc" id="L38">        this.infoGral = &quot;&quot;;</span>
+<span class="nc" id="L38">        this.infoGral = infoGral;</span>
 <span class="nc" id="L39">    }</span>
    
     public ArrayList&lt;ComercioActividad&gt; getActividades() {
@@ -72,7 +72,7 @@ public class Ciudad implements Serializable {
 <span class="nc" id="L72">               estGastronomicos.add(cA);</span>
 <span class="nc" id="L73">                break;</span>
             case actividad:
-<span class="nc" id="L75">                alojamientos.add(cA);</span>
+<span class="nc" id="L75">                actividades.add(cA);</span>
                 break;
         }
 <span class="nc" id="L78">    }</span>
@@ -88,7 +88,7 @@ public class Ciudad implements Serializable {
     
 <span class="nc" id="L89">    public Ciudad(String unNombre, String unaInfo) {</span>
 <span class="nc" id="L90">        nombre = unNombre;</span>
-<span class="nc" id="L91">        infoGral = &quot;&quot;;</span>
+<span class="nc" id="L91">        infoGral = unaInfo;</span>
 <span class="nc" id="L92">        imagenes = new ArrayList&lt;&gt;();</span>
 <span class="nc" id="L93">        actividades = new ArrayList&lt;&gt;();</span>
 <span class="nc" id="L94">        estGastronomicos = new ArrayList&lt;&gt;();</span>

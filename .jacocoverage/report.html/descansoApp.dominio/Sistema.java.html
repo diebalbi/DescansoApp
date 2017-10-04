@@ -7,37 +7,37 @@ public class Sistema  implements Serializable{
     private ArrayList&lt;Viaje&gt; listaViajes;
     private ArrayList&lt;Ciudad&gt; listaCiudades;
     
-<span class="nc" id="L10">    public Sistema(){</span>
-<span class="nc" id="L11">        listaViajes = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L12">        listaCiudades = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L13">    }</span>
+<span class="fc" id="L10">    public Sistema(){</span>
+<span class="fc" id="L11">        listaViajes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L12">        listaCiudades = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L13">    }</span>
 
     public ArrayList&lt;Viaje&gt; getListaViajes() {
-<span class="nc" id="L16">        return listaViajes;</span>
+<span class="fc" id="L16">        return listaViajes;</span>
     }
 
     public ArrayList&lt;Ciudad&gt; getListaCiudades() {
-<span class="nc" id="L20">        return listaCiudades;</span>
+<span class="fc" id="L20">        return listaCiudades;</span>
     }
     
      public void agregarViaje(Viaje unViaje)throws Exception{
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (listaViajes.indexOf(unViaje) != -1){</span>
-<span class="nc" id="L25">            throw new Exception(&quot;El nombre del viaje ya existe. Por favor ingrese uno nuevo.&quot;);</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (listaViajes.indexOf(unViaje) != -1){</span>
+<span class="fc" id="L25">            throw new Exception(&quot;El nombre del viaje ya existe. Por favor ingrese uno nuevo.&quot;);</span>
         } 
-<span class="nc" id="L27">        listaViajes.add(unViaje);</span>
+<span class="fc" id="L27">        listaViajes.add(unViaje);</span>
         
-<span class="nc" id="L29">    }</span>
+<span class="fc" id="L29">    }</span>
     
     public boolean eliminarViaje(Viaje unViaje){
-<span class="nc" id="L32">        return listaViajes.remove(unViaje);</span>
+<span class="fc" id="L32">        return listaViajes.remove(unViaje);</span>
     }
     
     public boolean pertenece(Viaje unViaje){
-<span class="nc" id="L36">      return listaViajes.contains(unViaje);</span>
+<span class="fc" id="L36">      return listaViajes.contains(unViaje);</span>
     }
     
     public void agregarCiudad(Ciudad unaCiudad){
-<span class="nc" id="L40">        listaCiudades.add(unaCiudad);</span>
-<span class="nc" id="L41">    }</span>
+<span class="fc" id="L40">        listaCiudades.add(unaCiudad);</span>
+<span class="fc" id="L41">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

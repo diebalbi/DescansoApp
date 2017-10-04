@@ -30,21 +30,21 @@ public class Main {
     public static Sistema cargarModelo() throws IOException {
         Sistema unModelo;
 
-        try {
+        /*try {
             //Intento recuperar los datos guardados
             FileInputStream archivo = new FileInputStream("Sistema");
             ObjectInputStream leer = new ObjectInputStream(archivo);
 
             unModelo = (Sistema) leer.readObject();
-            leer.close();
-        } catch (FileNotFoundException | ClassNotFoundException e) {
+            leer.close();*/
+        //} catch (FileNotFoundException | ClassNotFoundException e) {
             //Si no puedo abrir el archivo, creo un modelo nuevo
             unModelo = new Sistema();
 
             ArrayList<Ciudad> cdads = Informacion.ciudades();
             for (int i=0; i < cdads.size(); i++)
                 unModelo.agregarCiudad(cdads.get(i));
-        }
+        //}
 
         return unModelo;
     }

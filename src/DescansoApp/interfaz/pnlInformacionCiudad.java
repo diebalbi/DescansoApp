@@ -19,9 +19,11 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
         modelo = unModelo;
         ciudad = unaCiudad;
         padre = unPadre;
-        listaImagenes = unaCiudad.getImagenes();
-        lblGaleria.setIcon(listaImagenes.get(0));
-
+        if(unaCiudad.getImagenes().size() != 0){
+            listaImagenes = unaCiudad.getImagenes();
+            lblGaleria.setIcon(listaImagenes.get(0));
+        }
+        
         txtIntroduccion.setOpaque(false);
         scroll1.setOpaque(false);
         scroll1.getViewport().setOpaque(false);

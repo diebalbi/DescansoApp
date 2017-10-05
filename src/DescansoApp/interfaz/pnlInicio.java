@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import descansoApp.dominio.Sistema;
+import java.awt.Cursor;
 
 public class pnlInicio extends javax.swing.JPanel {
 
@@ -72,6 +73,9 @@ public class pnlInicio extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBuscarMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBuscarMouseEntered(evt);
+            }
         });
         add(lblBuscar);
         lblBuscar.setBounds(720, 270, 20, 20);
@@ -107,6 +111,8 @@ public class pnlInicio extends javax.swing.JPanel {
 
     private void lblNuevoViajeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevoViajeMouseEntered
         lblNuevoViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnNuevoViajeON.png")));
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblNuevoViaje.setCursor(cursor);
     }//GEN-LAST:event_lblNuevoViajeMouseEntered
 
     private void lblNuevoViajeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevoViajeMouseExited
@@ -115,6 +121,8 @@ public class pnlInicio extends javax.swing.JPanel {
 
     private void lblMisViajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMisViajesMouseEntered
         lblMisViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnMisViajesON.png")));
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblMisViajes.setCursor(cursor);
     }//GEN-LAST:event_lblMisViajesMouseEntered
 
     private void lblMisViajesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMisViajesMouseExited
@@ -146,6 +154,11 @@ public class pnlInicio extends javax.swing.JPanel {
             buscar();
         }
     }//GEN-LAST:event_txtBuscadorKeyReleased
+
+    private void lblBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBuscarMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblBuscar.setCursor(cursor);
+    }//GEN-LAST:event_lblBuscarMouseEntered
 
     private void buscar() {
         if (txtBuscador.getText().length() <= 3) {

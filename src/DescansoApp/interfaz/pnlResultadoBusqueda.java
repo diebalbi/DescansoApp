@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.*;
 import descansoApp.dominio.Sistema;
 import descansoApp.herramientas.Buscador;
+import java.awt.Cursor;
 
 public class pnlResultadoBusqueda extends javax.swing.JPanel {
 
@@ -48,6 +49,9 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHomeMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHomeMouseEntered(evt);
+            }
         });
         add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
 
@@ -56,6 +60,9 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         lblBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBuscarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBuscarMouseEntered(evt);
             }
         });
         add(lblBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 38, 20, 20));
@@ -134,6 +141,16 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         padre.add(new pnlInicio(modelo, padre));
         padre.pack();
     }//GEN-LAST:event_lblHomeMouseClicked
+
+    private void lblBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBuscarMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblBuscar.setCursor(cursor);
+    }//GEN-LAST:event_lblBuscarMouseEntered
+
+    private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblHome.setCursor(cursor);
+    }//GEN-LAST:event_lblHomeMouseEntered
 
     private void busqueda(String unaPalabra) {
         pnlResultados.removeAll();

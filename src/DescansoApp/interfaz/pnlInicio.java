@@ -26,6 +26,7 @@ public class pnlInicio extends javax.swing.JPanel {
         lblBuscar = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
         lblBuscador = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(840, 500));
@@ -47,7 +48,7 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblNuevoViaje);
-        lblNuevoViaje.setBounds(60, 100, 132, 40);
+        lblNuevoViaje.setBounds(100, 210, 132, 40);
 
         lblMisViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnMisViajes.png"))); // NOI18N
         lblMisViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -63,7 +64,7 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblMisViajes);
-        lblMisViajes.setBounds(110, 280, 132, 40);
+        lblMisViajes.setBounds(100, 270, 132, 40);
 
         lblBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Lupa.png"))); // NOI18N
         lblBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -73,9 +74,11 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblBuscar);
-        lblBuscar.setBounds(720, 290, 20, 20);
+        lblBuscar.setBounds(720, 270, 20, 20);
 
+        txtBuscador.setBackground(new java.awt.Color(102, 102, 102));
         txtBuscador.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        txtBuscador.setForeground(new java.awt.Color(255, 255, 255));
         txtBuscador.setBorder(null);
         txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -83,11 +86,17 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(txtBuscador);
-        txtBuscador.setBounds(370, 290, 340, 22);
+        txtBuscador.setBounds(370, 270, 340, 22);
 
         lblBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Buscador.png"))); // NOI18N
         add(lblBuscador);
-        lblBuscador.setBounds(340, 190, 440, 160);
+        lblBuscador.setBounds(330, 180, 440, 160);
+
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Titulo.png"))); // NOI18N
+        lblTitulo.setToolTipText("");
+        add(lblTitulo);
+        lblTitulo.setBounds(280, 50, 260, 60);
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/FondoInicio.png"))); // NOI18N
         lblImagen.setPreferredSize(new java.awt.Dimension(800, 450));
@@ -154,6 +163,7 @@ public class pnlInicio extends javax.swing.JPanel {
     private javax.swing.JLabel lblImagen;
     public javax.swing.JLabel lblMisViajes;
     public javax.swing.JLabel lblNuevoViaje;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables
 }

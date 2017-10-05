@@ -14,7 +14,6 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
 
     public pnlResultadoBusqueda(Sistema unModelo, JFrame unPadre, String palabra) {
         initComponents();
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Fondo.png")));
         pnlResultados.setOpaque(false);
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
@@ -39,10 +38,12 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         pnlResultados = new javax.swing.JPanel();
         lblFondo = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(857, 500));
+        setPreferredSize(new java.awt.Dimension(857, 500));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnHome.png"))); // NOI18N
-        lblHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHomeMouseClicked(evt);
@@ -51,7 +52,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
 
         lblBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Lupa.png"))); // NOI18N
-        lblBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblBuscarMouseClicked(evt);
@@ -98,7 +99,10 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 770, 370));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Fondo.png"))); // NOI18N
-        add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblFondo.setMaximumSize(new java.awt.Dimension(850, 500));
+        lblFondo.setMinimumSize(new java.awt.Dimension(850, 500));
+        lblFondo.setPreferredSize(new java.awt.Dimension(850, 500));
+        add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 500));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorActionPerformed

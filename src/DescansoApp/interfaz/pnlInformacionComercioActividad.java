@@ -44,6 +44,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             lblBoton.setVisible(false);
         }
         
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         cargar();
     }
 

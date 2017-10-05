@@ -31,8 +31,10 @@ public class pnlInicio extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(840, 500));
         setLayout(null);
 
-        lblNuevoViaje.setText("Nuevo Viaje");
+        lblNuevoViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnNuevoViaje.png"))); // NOI18N
+        lblNuevoViaje.setToolTipText("");
         lblNuevoViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblNuevoViaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblNuevoViaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNuevoViajeMouseClicked(evt);
@@ -45,7 +47,7 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblNuevoViaje);
-        lblNuevoViaje.setBounds(60, 100, 60, 40);
+        lblNuevoViaje.setBounds(60, 100, 132, 40);
 
         lblMisViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnMisViajes.png"))); // NOI18N
         lblMisViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -150,8 +152,8 @@ public class pnlInicio extends javax.swing.JPanel {
     private javax.swing.JLabel lblBuscador;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblImagen;
-    private javax.swing.JLabel lblMisViajes;
-    private javax.swing.JLabel lblNuevoViaje;
+    public javax.swing.JLabel lblMisViajes;
+    public javax.swing.JLabel lblNuevoViaje;
     private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables
 }

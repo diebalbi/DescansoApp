@@ -329,7 +329,7 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
 
     private void lblQueEstaCercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQueEstaCercaMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo, padre));
+        padre.add(new pnlMapas(modelo, ciudad, padre));
         padre.pack();
     }//GEN-LAST:event_lblQueEstaCercaMouseClicked
 

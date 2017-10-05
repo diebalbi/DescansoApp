@@ -28,9 +28,10 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         cA = unCA;
         padre = unPadre;
         ciudad = unaCiudad;
-
-        listaImagenes = cA.getImagenes();
-        lblGaleria.setIcon(listaImagenes.get(0));
+        if(cA.getImagenes().size() != 0){
+            listaImagenes = cA.getImagenes();
+            lblGaleria.setIcon(listaImagenes.get(0));
+        }
 
         if (!modelo.getListaViajes().isEmpty()) {
             Iterator<Viaje> itViaje = modelo.getListaViajes().iterator();
@@ -421,15 +422,11 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         txtUbicacion.setText(cA.getUbicacion());
         lblpagina.setText(cA.getWeb());
         
-        
-        
-        
         txtIntroduccion.setOpaque(false);
         txtHorarios.setOpaque(false);
         txtTelefono.setOpaque(false);
         txtPrecio.setOpaque(false);
         txtUbicacion.setOpaque(false);
-        
         
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
@@ -446,12 +443,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         scroll4.setBorder(null);
         scroll5.setOpaque(false);
         scroll5.getViewport().setOpaque(false);
-        scroll5.setBorder(null);
-        
-        
-        
-        
-        
+        scroll5.setBorder(null);   
     }
     
 

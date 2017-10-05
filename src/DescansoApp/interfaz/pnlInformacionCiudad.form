@@ -45,7 +45,7 @@
             <Component class="javax.swing.JLabel" name="lblVolver">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sobrinoPatrone/imagenes/btnHome.png"/>
+                  <Image iconType="3" name="/descansoApp/imagenes/btnHome.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -79,7 +79,7 @@
             <Component class="javax.swing.JLabel" name="lblDondeDorimir">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sobrinoPatrone/imagenes/btnDondeDormir.png"/>
+                  <Image iconType="3" name="/descansoApp/imagenes/btnDondeDormir.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -99,7 +99,7 @@
             <Component class="javax.swing.JLabel" name="lblDondeComer">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sobrinoPatrone/imagenes/btnDondeComer.png"/>
+                  <Image iconType="3" name="/descansoApp/imagenes/btnDondeComer.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -119,7 +119,7 @@
             <Component class="javax.swing.JLabel" name="lblQueHacer">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sobrinoPatrone/imagenes/btnQueHacer.png"/>
+                  <Image iconType="3" name="/descansoApp/imagenes/btnQueHacer.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -139,7 +139,7 @@
             <Component class="javax.swing.JLabel" name="lblQueEstaCerca">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sobrinoPatrone/imagenes/btnQueEstaCerca.png"/>
+                  <Image iconType="3" name="/descansoApp/imagenes/btnQueEstaCerca.png"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -173,7 +173,7 @@
                 <Component class="javax.swing.JLabel" name="lblSiguiente">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/sobrinoPatrone/imagenes/btnGaleriader.png"/>
+                      <Image iconType="3" name="/descansoApp/imagenes/btnGaleriader.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
@@ -191,7 +191,7 @@
                 <Component class="javax.swing.JLabel" name="lblAnterior">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/sobrinoPatrone/imagenes/btnGaleriaIzq.png"/>
+                      <Image iconType="3" name="/descansoApp/imagenes/btnGaleriaIzq.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Default Cursor"/>
@@ -328,7 +328,7 @@
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/sobrinoPatrone/imagenes/Repercusiones.png"/>
+                      <Image iconType="3" name="/descansoApp/imagenes/Repercusiones.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="jLabel3"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
@@ -377,7 +377,7 @@
             <Component class="javax.swing.JLabel" name="lblFondo">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/sobrinoPatrone/imagenes/InformacionCiudad.png"/>
+                  <Image iconType="3" name="/descansoApp/imagenes/InformacionCiudad.png"/>
                 </Property>
               </Properties>
               <Constraints>

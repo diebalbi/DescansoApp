@@ -12,7 +12,6 @@ public class PopUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("descansoApp");
-        setAlwaysOnTop(true);
         setFocusTraversalPolicyProvider(true);
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);

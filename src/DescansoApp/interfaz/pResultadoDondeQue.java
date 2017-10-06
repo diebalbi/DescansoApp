@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Sistema;
+import java.awt.Color;
+import java.awt.Cursor;
 
 public class pResultadoDondeQue extends javax.swing.JPanel {
 
@@ -40,13 +42,21 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
 
         setOpaque(false);
 
-        lblNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(0, 51, 204));
+        lblNombre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 0, 204));
         lblNombre.setText("Nombre de DondeQue");
-        lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblNombre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblNombreMouseMoved(evt);
+            }
+        });
         lblNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNombreMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblNombreMouseExited(evt);
             }
         });
 
@@ -85,6 +95,16 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
         ventana.add(new pnlInformacionComercioActividad(modelo, cA, ventana,ciudad));
         ventana.pack();
     }//GEN-LAST:event_lblNombreMouseClicked
+
+    private void lblNombreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblNombre.setCursor(cursor);
+        lblNombre.setForeground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_lblNombreMouseMoved
+
+    private void lblNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseExited
+        lblNombre.setForeground(Color.BLUE);
+    }//GEN-LAST:event_lblNombreMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

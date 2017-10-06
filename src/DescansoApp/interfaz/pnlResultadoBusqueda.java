@@ -84,6 +84,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         add(lblNoHay, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 130, -1, -1));
 
         lblTitulo.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Resultados de la búsqueda");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 38, -1, -1));
 
@@ -114,23 +115,19 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscadorActionPerformed
 
     private void lblBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBuscarMouseClicked
+        int cantidadLetrasPermitidas = 30;
         if (txtBuscador.getText().length() <= 3) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una palabra clave (más de tres letras) en el cuadro de busqueda", "Busqueda Vacía", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+        }
+        else if(txtBuscador.getText().length() >cantidadLetrasPermitidas){
+            JOptionPane.showMessageDialog(padre, "La busqueda puede contener hasta 30 caracteres.");
+        }else {
             busqueda(txtBuscador.getText());
             txtBuscador.setText("");
         }
     }//GEN-LAST:event_lblBuscarMouseClicked
 
     private void txtBuscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyReleased
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (txtBuscador.getText().length() <= 3) {
-                JOptionPane.showMessageDialog(this, "Debe ingresar una palabra clave (más de tres letras) en el cuadro de busqueda", "Busqueda Vacía", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                busqueda(txtBuscador.getText());
-                txtBuscador.setText("");
-            }
-        }
     }//GEN-LAST:event_txtBuscadorKeyReleased
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked

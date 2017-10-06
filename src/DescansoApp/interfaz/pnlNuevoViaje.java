@@ -1,10 +1,12 @@
 package descansoApp.interfaz;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import java.awt.Cursor;
 
 public class pnlNuevoViaje extends javax.swing.JPanel {
 
@@ -17,16 +19,24 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
         modelo = unModelo;
         miVentana = unContenedor;
         modViaje = modificarViaje;
-        lblBoton.setVisible(true);
-
+        restringirCamposDeFecha();
+        
         if (modViaje == null) {      
             lblVolver.setVisible(false);
+            lblEliminar.setVisible(false);
         } else {
             lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/ModificarViaje.png")));
             txtNombre.setText(modViaje.getNombre());
             dChooserFechaI.setCalendar(modViaje.getFechaI());
             dChooserFechaF.setCalendar(modViaje.getFechaF());
         }
+    }
+    
+    private void restringirCamposDeFecha() {
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) dChooserFechaI.getDateEditor();
+        editor.setEditable(false);
+        JTextFieldDateEditor editor2 = (JTextFieldDateEditor) dChooserFechaF.getDateEditor();
+        editor2.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +58,11 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
             }
         });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 200, 20));
@@ -90,6 +105,9 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVolverMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblVolverMouseEntered(evt);
+            }
         });
         add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
@@ -102,7 +120,8 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void lblEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseEntered
-
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblEliminar.setCursor(cursor);
     }//GEN-LAST:event_lblEliminarMouseEntered
 
     private void lblEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseExited
@@ -118,28 +137,22 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
     }//GEN-LAST:event_lblEliminarMouseClicked
 
     private void lblBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseClicked
-        if (txtNombre.getText().length() > 0 && dChooserFechaI != null && dChooserFechaF != null) {
+        if (dChooserFechaI.getDate() != null && txtNombre.getText().length() > 0 && dChooserFechaF.getDate() != null) {
             Viaje viaje;
-
             if (modViaje == null) {
                 viaje = new Viaje();
             } else {
                 viaje = modViaje;
             }
-
             viaje.setNombre(txtNombre.getText());
             Calendar c = dChooserFechaI.getCalendar();
-
             try {
                 viaje.setFechaI(c);
                 viaje.setFechaF(dChooserFechaI.getCalendar(), dChooserFechaF.getCalendar());
-
                 if (modViaje == null) {
                     modelo.agregarViaje(viaje);
                 }
-
                 miVentana.dispose();
-
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -161,6 +174,18 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
         miVentana.add(new pnlMisViajes(modelo, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        int cantidadLetrasPermitidas = 30;
+        if(txtNombre.getText().length() >cantidadLetrasPermitidas){
+            JOptionPane.showMessageDialog(miVentana, "El viaje puede tener hasta 30 caracteres.");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void lblVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblVolver.setCursor(cursor);
+    }//GEN-LAST:event_lblVolverMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser dChooserFechaF;

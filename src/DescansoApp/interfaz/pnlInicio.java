@@ -88,6 +88,9 @@ public class pnlInicio extends javax.swing.JPanel {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscadorKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscadorKeyTyped(evt);
+            }
         });
         add(txtBuscador);
         txtBuscador.setBounds(370, 270, 340, 22);
@@ -138,11 +141,16 @@ public class pnlInicio extends javax.swing.JPanel {
     }//GEN-LAST:event_lblNuevoViajeMouseClicked
 
     private void lblMisViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMisViajesMouseClicked
-        PopUp p= new PopUp();
-        p.add(new pnlMisViajes(modelo, p));
-        p.pack();
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        if(modelo.getListaViajes().isEmpty()){
+            JOptionPane.showMessageDialog(padre, "No hay viajes ingresados.");
+        }
+        else{
+            PopUp p= new PopUp();
+            p.add(new pnlMisViajes(modelo, p));
+            p.pack();
+            p.setLocationRelativeTo(null);
+            p.setVisible(true);
+        }
     }//GEN-LAST:event_lblMisViajesMouseClicked
 
     private void lblBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBuscarMouseClicked
@@ -160,10 +168,19 @@ public class pnlInicio extends javax.swing.JPanel {
         lblBuscar.setCursor(cursor);
     }//GEN-LAST:event_lblBuscarMouseEntered
 
+    private void txtBuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscadorKeyTyped
+
     private void buscar() {
+        int cantidadLetrasPermitidas = 30;
         if (txtBuscador.getText().length() <= 3) {
             JOptionPane.showMessageDialog(this, "Debe ingresar una palabra clave (más de tres letras) en el cuadro de busqueda", "Busqueda Vacía", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+        }
+        else if(txtBuscador.getText().length() >cantidadLetrasPermitidas){
+            JOptionPane.showMessageDialog(padre, "La busqueda puede contener hasta 30 caracteres.");
+        }
+        else {
             padre.remove(this);
             padre.add(new pnlResultadoBusqueda(modelo, padre, txtBuscador.getText()), BorderLayout.WEST);
             padre.pack();

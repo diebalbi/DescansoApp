@@ -5,6 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import javax.swing.JOptionPane;
 
 public class pnlMisViajes extends javax.swing.JPanel {
 
@@ -31,7 +32,6 @@ public class pnlMisViajes extends javax.swing.JPanel {
 
         scroll = new javax.swing.JScrollPane();
         pnlResultados = new javax.swing.JPanel();
-        lblNoHay = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -57,11 +57,6 @@ public class pnlMisViajes extends javax.swing.JPanel {
 
         add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
-        lblNoHay.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNoHay.setForeground(new java.awt.Color(255, 255, 255));
-        lblNoHay.setText("No hay viajes guardados!");
-        add(lblNoHay, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 90, -1, -1));
-
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/MisViajes.png"))); // NOI18N
         add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 280));
     }// </editor-fold>//GEN-END:initComponents
@@ -72,7 +67,6 @@ public class pnlMisViajes extends javax.swing.JPanel {
         ArrayList<Viaje> resultados = modelo.getListaViajes();
         int cantResultados = resultados.size();
         if (cantResultados > 0) {
-            lblNoHay.setVisible(false);
             for (int i = 0; i < cantResultados; i++) {
                 pResultadoMisViajes p = new pResultadoMisViajes(modelo, resultados.get(i), miVentana, this);
                 pnlResultados.add(p);
@@ -80,13 +74,10 @@ public class pnlMisViajes extends javax.swing.JPanel {
             pnlResultados.setVisible(true);
             pnlResultados.revalidate();
             pnlResultados.repaint();
-        } else {
-            lblNoHay.setVisible(true);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblFondo;
-    private javax.swing.JLabel lblNoHay;
     private javax.swing.JPanel pnlResultados;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables

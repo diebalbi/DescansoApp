@@ -1,6 +1,9 @@
 package descansoApp.herramientas;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
+import javax.swing.JTextField;
 
 public class Utilidades {
 
@@ -20,5 +23,27 @@ public class Utilidades {
         System.out.println("");
         System.out.println(f.get(Calendar.HOUR));
         System.out.println(f.get(Calendar.MINUTE));
+    }
+    
+    public static void soloNumeros(JTextField campo){
+        campo.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent key){
+                char caracter = key.getKeyChar();
+                if(!Character.isDigit(caracter)){
+                    key.consume();
+                }
+            }
+        });
+    }
+    
+    public static void limitarNumeros(final JTextField campo, final int cantidad){
+        campo.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent key){
+                int largo = campo.getText().length();
+                if(largo >= cantidad){
+                    key.consume();
+                }
+            }
+        });
     }
 }

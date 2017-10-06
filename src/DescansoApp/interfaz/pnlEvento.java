@@ -1,11 +1,13 @@
 package descansoApp.interfaz;
 
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import descansoApp.dominio.Evento;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import descansoApp.herramientas.Utilidades;
 import descansoApp.herramientas.ValidarNumero;
 import java.awt.Cursor;
 
@@ -24,7 +26,8 @@ public class pnlEvento extends javax.swing.JPanel {
         modEvento = unEvento;
         ciudad = unaCiudad;
         miVentana = unContenedor;
-
+        restringirCampos();
+        
         if (modEvento == null) {
             lblEliminar1.setVisible(false);
         } else {
@@ -40,7 +43,22 @@ public class pnlEvento extends javax.swing.JPanel {
             dChosserFechaF.setCalendar(modEvento.getFechaHoraF());
         }
     }
-
+    
+    private void restringirCampos(){
+        Utilidades.soloNumeros(txtHoraFHoras);
+        Utilidades.soloNumeros(txtHoraFMinutos);
+        Utilidades.soloNumeros(txtHoraIHoras);
+        Utilidades.soloNumeros(txtHoraIMinutos);
+        Utilidades.limitarNumeros(txtHoraFHoras, 2);
+        Utilidades.limitarNumeros(txtHoraFMinutos, 2);
+        Utilidades.limitarNumeros(txtHoraIHoras, 2);
+        Utilidades.limitarNumeros(txtHoraIMinutos, 2);
+        JTextFieldDateEditor editor = (JTextFieldDateEditor) dChosserFechaF.getDateEditor();
+        editor.setEditable(false);
+        JTextFieldDateEditor editor2 = (JTextFieldDateEditor) dChosserFechaI.getDateEditor();
+        editor2.setEditable(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,17 +89,23 @@ public class pnlEvento extends javax.swing.JPanel {
 
         txtDescripcion.setBackground(new java.awt.Color(51, 51, 51));
         txtDescripcion.setColumns(20);
+        txtDescripcion.setForeground(new java.awt.Color(204, 204, 204));
         txtDescripcion.setLineWrap(true);
         txtDescripcion.setRows(5);
         txtDescripcion.setWrapStyleWord(true);
         txtDescripcion.setBorder(null);
+        txtDescripcion.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtDescripcion.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        txtDescripcion.setSelectedTextColor(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(txtDescripcion);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 200, 150));
 
         txtNombre.setBackground(new java.awt.Color(51, 51, 51));
-        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
+        txtNombre.setForeground(new java.awt.Color(204, 204, 204));
         txtNombre.setBorder(null);
+        txtNombre.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtNombre.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -98,16 +122,26 @@ public class pnlEvento extends javax.swing.JPanel {
 
         txtHoraIMinutos.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraIMinutos.setBorder(null);
-        txtHoraIMinutos.setForeground(new java.awt.Color(51, 51, 51));
+        txtHoraIMinutos.setForeground(new java.awt.Color(204, 204, 204));
+        txtHoraIMinutos.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtHoraIMinutos.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtHoraIMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraIMinutosActionPerformed(evt);
             }
         });
+        txtHoraIMinutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHoraIMinutosKeyTyped(evt);
+            }
+        });
         add(txtHoraIMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 19, 18));
 
         txtUbicacion.setBackground(new java.awt.Color(51, 51, 51));
+        txtUbicacion.setForeground(new java.awt.Color(204, 204, 204));
         txtUbicacion.setBorder(null);
+        txtUbicacion.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtUbicacion.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUbicacionActionPerformed(evt);
@@ -123,6 +157,9 @@ public class pnlEvento extends javax.swing.JPanel {
 
         txtHoraFHoras.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraFHoras.setBorder(null);
+        txtHoraFHoras.setForeground(new java.awt.Color(204, 204, 204));
+        txtHoraFHoras.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtHoraFHoras.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtHoraFHoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraFHorasActionPerformed(evt);
@@ -132,7 +169,9 @@ public class pnlEvento extends javax.swing.JPanel {
 
         txtHoraIHoras.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraIHoras.setBorder(null);
-        txtHoraIHoras.setForeground(new java.awt.Color(51, 51, 51));
+        txtHoraIHoras.setForeground(new java.awt.Color(204, 204, 204));
+        txtHoraIHoras.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtHoraIHoras.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtHoraIHoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraIHorasActionPerformed(evt);
@@ -142,6 +181,9 @@ public class pnlEvento extends javax.swing.JPanel {
 
         txtHoraFMinutos.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraFMinutos.setBorder(null);
+        txtHoraFMinutos.setForeground(new java.awt.Color(204, 204, 204));
+        txtHoraFMinutos.setCaretColor(new java.awt.Color(204, 204, 204));
+        txtHoraFMinutos.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         txtHoraFMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraFMinutosActionPerformed(evt);
@@ -328,6 +370,9 @@ public class pnlEvento extends javax.swing.JPanel {
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         lblGuardar.setCursor(cursor);
     }//GEN-LAST:event_lblGuardarMouseMoved
+
+    private void txtHoraIMinutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraIMinutosKeyTyped
+    }//GEN-LAST:event_txtHoraIMinutosKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

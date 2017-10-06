@@ -1,5 +1,4 @@
 package descansoApp.interfaz;
-
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -19,10 +18,8 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(null);
-
         modelo = unModelo;
         padre = unPadre;
-
         busqueda(palabra);
     }
 
@@ -156,18 +153,14 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         pnlResultados.removeAll();
         pnlResultados.revalidate();
         pnlResultados.repaint();
-
         Buscador bus = new Buscador(modelo.getListaCiudades());
         ArrayList<descansoApp.dominio.Ciudad> resultados = bus.buscar(unaPalabra);
-
         int cantResultados = resultados.size();
         if (cantResultados > 0) {
             scroll.setVisible(true);
             lblNoHay.setVisible(false);
-            
             for (int i = 0; i < cantResultados; i++) {
                 pResultado pr = new pResultado(modelo, resultados.get(i), padre, this);
-                
                 pnlResultados.setLayout(new java.awt.BorderLayout());
                 pnlResultados.add(pr);
                 pr.setVisible(true);

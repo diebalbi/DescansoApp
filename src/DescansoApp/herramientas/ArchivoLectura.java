@@ -21,7 +21,6 @@ public class ArchivoLectura {
         } catch (IOException e) {
             linea = null;
         }
-        
         return linea != null;
     }
     
@@ -31,14 +30,12 @@ public class ArchivoLectura {
     
     public boolean cerrar(){
         boolean ok = true;
-        
         try {
             in.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error: No se pudo cerrar el archivo.", "Cerrar Archivo", 3);
             ok = false;
         }
-        
         return ok;
     }
 }

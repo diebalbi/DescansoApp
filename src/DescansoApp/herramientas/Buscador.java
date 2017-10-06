@@ -1,5 +1,4 @@
 package descansoApp.herramientas;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import descansoApp.dominio.Ciudad;
@@ -16,11 +15,9 @@ public class Buscador {
         palabra = palabra.toLowerCase();
         palabra = palabra.trim();
         ArrayList<Ciudad> ret = new ArrayList<>();
-
         Iterator<Ciudad> it = ciudades.iterator();
         while (it.hasNext()) {
             Ciudad c = it.next();
-
             String s = c.getNombre();
             s = s.toLowerCase();
             s = s.trim();
@@ -42,7 +39,6 @@ public class Buscador {
                 }
             }
         }
-
         return ret;
     }
 }

@@ -130,7 +130,7 @@ public class pnlInicio extends javax.swing.JPanel {
     }//GEN-LAST:event_lblMisViajesMouseExited
 
     private void lblNuevoViajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevoViajeMouseClicked
-        PopUp p= new PopUp();
+        PopUp p = new PopUp();
         p.add(new pnlNuevoViaje(modelo, p, null));
         p.pack();
         p.setLocationRelativeTo(null);

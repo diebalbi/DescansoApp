@@ -6,7 +6,8 @@ import javax.swing.JOptionPane;
 import descansoApp.dominio.Evento;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
-import descansoApp.herramientas.EsNumero;
+import descansoApp.herramientas.ValidarNumero;
+import java.awt.Cursor;
 
 public class pnlEvento extends javax.swing.JPanel {
 
@@ -26,7 +27,6 @@ public class pnlEvento extends javax.swing.JPanel {
 
         if (modEvento == null) {
             lblEliminar1.setVisible(false);
-            lblVolver.setVisible(false);
         } else {
             lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/ModificarEvento.png")));
             txtNombre.setText(modEvento.getNombre());
@@ -69,6 +69,7 @@ public class pnlEvento extends javax.swing.JPanel {
 
         jScrollPane1.setBorder(null);
 
+        txtDescripcion.setBackground(new java.awt.Color(51, 51, 51));
         txtDescripcion.setColumns(20);
         txtDescripcion.setLineWrap(true);
         txtDescripcion.setRows(5);
@@ -78,6 +79,8 @@ public class pnlEvento extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 200, 150));
 
+        txtNombre.setBackground(new java.awt.Color(51, 51, 51));
+        txtNombre.setForeground(new java.awt.Color(51, 51, 51));
         txtNombre.setBorder(null);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,10 +88,17 @@ public class pnlEvento extends javax.swing.JPanel {
             }
         });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, 18));
+
+        dChosserFechaI.setBackground(new java.awt.Color(51, 51, 51));
+        dChosserFechaI.setForeground(new java.awt.Color(102, 102, 102));
         add(dChosserFechaI, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 130, -1));
+
+        dChosserFechaF.setBackground(new java.awt.Color(51, 51, 51));
         add(dChosserFechaF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 130, -1));
 
+        txtHoraIMinutos.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraIMinutos.setBorder(null);
+        txtHoraIMinutos.setForeground(new java.awt.Color(51, 51, 51));
         txtHoraIMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraIMinutosActionPerformed(evt);
@@ -96,6 +106,7 @@ public class pnlEvento extends javax.swing.JPanel {
         });
         add(txtHoraIMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 19, 18));
 
+        txtUbicacion.setBackground(new java.awt.Color(51, 51, 51));
         txtUbicacion.setBorder(null);
         txtUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +121,7 @@ public class pnlEvento extends javax.swing.JPanel {
         jLabel5.setText(" :");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 10, 20));
 
+        txtHoraFHoras.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraFHoras.setBorder(null);
         txtHoraFHoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +130,9 @@ public class pnlEvento extends javax.swing.JPanel {
         });
         add(txtHoraFHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 19, 18));
 
+        txtHoraIHoras.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraIHoras.setBorder(null);
+        txtHoraIHoras.setForeground(new java.awt.Color(51, 51, 51));
         txtHoraIHoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtHoraIHorasActionPerformed(evt);
@@ -126,6 +140,7 @@ public class pnlEvento extends javax.swing.JPanel {
         });
         add(txtHoraIHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 19, 18));
 
+        txtHoraFMinutos.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraFMinutos.setBorder(null);
         txtHoraFMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +150,12 @@ public class pnlEvento extends javax.swing.JPanel {
         add(txtHoraFMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 19, 18));
 
         lblGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnGuardar.png"))); // NOI18N
-        lblGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblGuardar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblGuardarMouseMoved(evt);
+            }
+        });
         lblGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblGuardarMouseClicked(evt);
@@ -150,7 +170,7 @@ public class pnlEvento extends javax.swing.JPanel {
         add(lblGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 250, -1, 30));
 
         lblEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Eliminar.png"))); // NOI18N
-        lblEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblEliminar1MouseClicked(evt);
@@ -165,10 +185,13 @@ public class pnlEvento extends javax.swing.JPanel {
         add(lblEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, 30));
 
         lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
-        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblVolverMouseEntered(evt);
             }
         });
         add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 28, -1, -1));
@@ -226,8 +249,8 @@ public class pnlEvento extends javax.swing.JPanel {
             evento.setDescripcion(txtDescripcion.getText());
             evento.setCiudad(ciudad);
 
-            if (!esNumero(txtHoraIHoras.getText()) || !esNumero(txtHoraIMinutos.getText())
-                    || !esNumero(txtHoraFHoras.getText()) || !esNumero(txtHoraFMinutos.getText())) {
+            if (!ValidarNumero.esNumero(txtHoraIHoras.getText()) || !ValidarNumero.esNumero(txtHoraIMinutos.getText())
+                    || !ValidarNumero.esNumero(txtHoraFHoras.getText()) || !ValidarNumero.esNumero(txtHoraFMinutos.getText())) {
                 JOptionPane.showMessageDialog(this, "Formato incorrecto de la hora ingresada.", "Error", JOptionPane.ERROR_MESSAGE);
 
             } else {
@@ -270,26 +293,11 @@ public class pnlEvento extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(miVentana, viaje, TOOL_TIP_TEXT_KEY, WIDTH);
         }
     }//GEN-LAST:event_lblGuardarMouseClicked
-
-    public boolean esNumero(String texto) {
-        boolean correcto;
-        int num;
-
-        try {
-            num = Integer.parseInt(texto);
-            correcto = true;
-        } catch (NumberFormatException e) {
-            correcto = false;
-        }
-
-        return correcto;
-    }
-    
+  
     private void lblEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseClicked
         int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el evento?", "Eliminar Evento", JOptionPane.OK_CANCEL_OPTION);
         if (respuesta == JOptionPane.OK_OPTION) {
             viaje.eliminarEvento(modEvento);
-            
             miVentana.remove(this);
             miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
             miVentana.pack();
@@ -297,7 +305,8 @@ public class pnlEvento extends javax.swing.JPanel {
     }//GEN-LAST:event_lblEliminar1MouseClicked
 
     private void lblEliminar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseEntered
-        
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblEliminar1.setCursor(cursor);        
     }//GEN-LAST:event_lblEliminar1MouseEntered
 
     private void lblEliminar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseExited
@@ -309,6 +318,16 @@ public class pnlEvento extends javax.swing.JPanel {
         miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
+
+    private void lblVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblVolver.setCursor(cursor);
+    }//GEN-LAST:event_lblVolverMouseEntered
+
+    private void lblGuardarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardarMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblGuardar.setCursor(cursor);
+    }//GEN-LAST:event_lblGuardarMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

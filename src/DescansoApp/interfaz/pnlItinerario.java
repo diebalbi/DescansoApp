@@ -93,7 +93,6 @@ public class pnlItinerario extends javax.swing.JPanel {
     }//GEN-LAST:event_lblVolverMouseClicked
 
     public void cargarItinerario() {
-         int cantResultados = 0;
         pnlResultados.removeAll();
         pnlResultados.repaint();
 
@@ -101,12 +100,12 @@ public class pnlItinerario extends javax.swing.JPanel {
         Collections.sort(resultados);
 
        
-        if (cantResultados > 0) {
+        if (resultados.size() > 0) {
             lblNoHay.setVisible(false);
             descansoApp.dominio.Ciudad ciudad = null;
             Calendar fecha = null;
 
-            for (int i = 0; i < cantResultados; i++) {
+            for (int i = 0; i < resultados.size(); i++) {
 
                 Evento actual = resultados.get(i);
 

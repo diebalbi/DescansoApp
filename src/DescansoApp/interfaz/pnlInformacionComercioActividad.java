@@ -337,7 +337,6 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         } else {
             contador++;
         }
-
         lblGaleria.setIcon(listaImagenes.get(contador));
     }//GEN-LAST:event_lblSiguienteMouseClicked
 

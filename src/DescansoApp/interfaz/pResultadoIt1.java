@@ -16,6 +16,7 @@ public class pResultadoIt1 extends javax.swing.JPanel {
         setOpaque(false);
 
         lblNombre.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(51, 51, 51));
         lblNombre.setText("Nombre de Ciudad");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

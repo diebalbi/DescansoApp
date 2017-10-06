@@ -16,19 +16,16 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
    
     public pResultadoDondeQue(Sistema unModelo, ComercioActividad unCA,  JFrame unaVentana, JPanel unPadre, descansoApp.dominio.Ciudad unaCiudad) {
         initComponents();
-       
         txtDes.setOpaque(false);
         txtDes.setLayout(new BoxLayout(txtDes, BoxLayout.PAGE_AXIS));
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(null);
-        
         modelo = unModelo;
         cA = unCA;
         padre = unPadre;
         ventana = unaVentana;
         ciudad = unaCiudad;
-        
         lblNombre.setText(unCA.getNombre());
         txtDes.setText(unCA.getDetalles());
     }

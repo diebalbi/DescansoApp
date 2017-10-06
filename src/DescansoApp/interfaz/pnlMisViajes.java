@@ -69,19 +69,14 @@ public class pnlMisViajes extends javax.swing.JPanel {
     private void cargarViajes() {
         pnlResultados.removeAll();
         pnlResultados.repaint();
-
         ArrayList<Viaje> resultados = modelo.getListaViajes();
-
         int cantResultados = resultados.size();
         if (cantResultados > 0) {
-            lblNoHay.setVisible(true);
-
+            lblNoHay.setVisible(false);
             for (int i = 0; i < cantResultados; i++) {
                 pResultadoMisViajes p = new pResultadoMisViajes(modelo, resultados.get(i), miVentana, this);
-
                 pnlResultados.add(p);
             }
-
             pnlResultados.setVisible(true);
             pnlResultados.revalidate();
             pnlResultados.repaint();

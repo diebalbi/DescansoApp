@@ -1,18 +1,14 @@
 package descansoApp.herramientas;
 
-public class EsNumero {
-    
+public class ValidarNumero {
     public static boolean esNumero(String texto) {
         boolean correcto;
-        int num;
-
         try {
-            num = Integer.parseInt(texto);
+            Integer.parseInt(texto);
             correcto = true;
         } catch (NumberFormatException e) {
             correcto = false;
         }
-
         return correcto;
     }
 }

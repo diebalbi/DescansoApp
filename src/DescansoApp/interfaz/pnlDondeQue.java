@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Sistema;
 import descansoApp.herramientas.TipoCA;
+import java.awt.Cursor;
 import javax.swing.JComponent;
 
 public class pnlDondeQue extends javax.swing.JPanel {
@@ -22,21 +23,17 @@ public class pnlDondeQue extends javax.swing.JPanel {
         initComponents();
         pnlResultados.setOpaque(false);
         pnlResultados.setLayout(new BoxLayout(pnlResultados, BoxLayout.PAGE_AXIS));
-
         scroll.setOpaque(false);
         scroll.getViewport().setOpaque(false);
         scroll.setBorder(null);
-
         scroll2.setOpaque(false);
         scroll2.getViewport().setOpaque(false);
         scroll2.setBorder(null);
         ((JComponent) lstFiltros.getCellRenderer()).setOpaque(false);
-
         modelo = unModelo;
         ciudad = unaCiudad;
         padre = unPadre;
         filtros = new ArrayList<>();
-
         switch (unTipo) {
             case alojamiento:
                 lista = ciudad.getAlojamientos();
@@ -61,30 +58,33 @@ public class pnlDondeQue extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblVolver = new javax.swing.JLabel();
         scroll2 = new javax.swing.JScrollPane();
         lstFiltros = new javax.swing.JList();
         scroll = new javax.swing.JScrollPane();
         pnlResultados = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        lblVolver1 = new javax.swing.JLabel();
+        lblInicio = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
+        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblVolverMouseEntered(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
+        add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
 
         scroll2.setHorizontalScrollBar(null);
 
         lstFiltros.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lstFiltros.setForeground(new java.awt.Color(255, 255, 255));
+        lstFiltros.setForeground(new java.awt.Color(51, 102, 255));
         lstFiltros.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -94,6 +94,8 @@ public class pnlDondeQue extends javax.swing.JPanel {
         lstFiltros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lstFiltros.setOpaque(false);
         lstFiltros.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        lstFiltros.setSelectionForeground(new java.awt.Color(153, 153, 153));
+        lstFiltros.setValueIsAdjusting(true);
         lstFiltros.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstFiltrosValueChanged(evt);
@@ -125,14 +127,17 @@ public class pnlDondeQue extends javax.swing.JPanel {
         lblTitulo.setText("TITULO");
         add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 36, 240, 30));
 
-        lblVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnHome.png"))); // NOI18N
-        lblVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lblVolver1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnHome.png"))); // NOI18N
+        lblInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblVolver1MouseClicked(evt);
+                lblInicioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblInicioMouseEntered(evt);
             }
         });
-        add(lblVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
+        add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Fondo.png"))); // NOI18N
         add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -141,7 +146,6 @@ public class pnlDondeQue extends javax.swing.JPanel {
     private void lstFiltrosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstFiltrosValueChanged
         pnlResultados.removeAll();
         pnlResultados.repaint();
-
         Iterator<ComercioActividad> it = lista.iterator();
         while (it.hasNext()) {
             ComercioActividad actual = it.next();
@@ -150,26 +154,34 @@ public class pnlDondeQue extends javax.swing.JPanel {
                 pnlResultados.add(p);
             }
         }
-
         pnlResultados.setVisible(true);
         pnlResultados.revalidate();
         pnlResultados.repaint();
     }//GEN-LAST:event_lstFiltrosValueChanged
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         padre.remove(this);
         padre.add(new pnlInformacionCiudad(modelo, ciudad, padre));
         padre.pack();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblVolverMouseClicked
 
-    private void lblVolver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolver1MouseClicked
+    private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
         padre.remove(this);
         padre.add(new pnlInicio(modelo, padre));
         padre.pack();
-    }//GEN-LAST:event_lblVolver1MouseClicked
+    }//GEN-LAST:event_lblInicioMouseClicked
+
+    private void lblInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblInicio.setCursor(cursor);
+    }//GEN-LAST:event_lblInicioMouseEntered
+
+    private void lblVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblVolver.setCursor(cursor);
+    }//GEN-LAST:event_lblVolverMouseEntered
 
     private void cargar() {
-
         int cantResultados = lista.size();
         if (cantResultados > 0) {
             for (int i = 0; i < cantResultados; i++) {
@@ -178,17 +190,16 @@ public class pnlDondeQue extends javax.swing.JPanel {
                 }
             }
         } 
-
         Collections.sort(filtros);
         lstFiltros.setListData(filtros.toArray());
         lstFiltros.setSelectedIndex(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblFondo;
+    private javax.swing.JLabel lblInicio;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblVolver1;
+    private javax.swing.JLabel lblVolver;
     private javax.swing.JList lstFiltros;
     private javax.swing.JPanel pnlResultados;
     private javax.swing.JScrollPane scroll;

@@ -1,5 +1,4 @@
 package descansoApp.interfaz;
-
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,6 +11,9 @@ import javax.swing.JFrame;
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import descansoApp.dominio.Ciudad;
+import java.awt.Color;
+import java.awt.Cursor;
 
 public class pnlInformacionComercioActividad extends javax.swing.JPanel {
 
@@ -20,7 +22,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
     private JFrame padre;
     private ArrayList<ImageIcon> listaImagenes;
     private int contador = 0;
-    private descansoApp.dominio.Ciudad ciudad;
+    private Ciudad ciudad;
 
     public pnlInformacionComercioActividad(Sistema unModelo, ComercioActividad unCA, JFrame unPadre, descansoApp.dominio.Ciudad unaCiudad) {
         initComponents();
@@ -28,11 +30,15 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         cA = unCA;
         padre = unPadre;
         ciudad = unaCiudad;
-        if(cA.getImagenes().size() != 0){
+        if(!cA.getImagenes().isEmpty()){
+            //lblGaleria.setIcon(); Cargar una imagen por defecto
+            lblSiguiente.setVisible(false);
+            lblAnterior.setVisible(false);
+        }
+        else {
             listaImagenes = cA.getImagenes();
             lblGaleria.setIcon(listaImagenes.get(0));
         }
-
         if (!modelo.getListaViajes().isEmpty()) {
             Iterator<Viaje> itViaje = modelo.getListaViajes().iterator();
             while (itViaje.hasNext()) {
@@ -43,8 +49,6 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             comboViajes.setVisible(false);
             lblBoton.setVisible(false);
         }
-        
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
         cargar();
     }
 
@@ -64,24 +68,20 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         comboViajes = new javax.swing.JComboBox();
         lblVolver = new javax.swing.JLabel();
         lblAnterior = new javax.swing.JLabel();
-        scroll = new javax.swing.JScrollPane();
-        txtHorarios = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         lblGaleria = new javax.swing.JLabel();
         lblHorarios = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
         lblWeb = new javax.swing.JLabel();
-        scroll2 = new javax.swing.JScrollPane();
-        txtTelefono = new javax.swing.JTextArea();
         lblPrecio1 = new javax.swing.JLabel();
-        scroll5 = new javax.swing.JScrollPane();
-        txtPrecio = new javax.swing.JTextArea();
         lblUbicacion = new javax.swing.JLabel();
-        scroll4 = new javax.swing.JScrollPane();
-        txtUbicacion = new javax.swing.JTextArea();
         lblBoton = new javax.swing.JLabel();
+        lblHorariosActividad = new javax.swing.JLabel();
+        lblTelefonoActividad = new javax.swing.JLabel();
+        lblPrecioActividad = new javax.swing.JLabel();
+        lblUbicacionActividad = new javax.swing.JLabel();
         lblpagina = new javax.swing.JLabel();
-        lblVolver1 = new javax.swing.JLabel();
+        lblHome = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(840, 500));
@@ -138,6 +138,9 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSiguienteMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSiguienteMouseEntered(evt);
+            }
         });
         jPanel1.add(lblSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 500, -1, 20));
 
@@ -149,6 +152,9 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVolverMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblVolverMouseEntered(evt);
+            }
         });
         jPanel1.add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
 
@@ -158,23 +164,11 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblAnteriorMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblAnteriorMouseEntered(evt);
+            }
         });
         jPanel1.add(lblAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
-
-        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        txtHorarios.setEditable(false);
-        txtHorarios.setColumns(20);
-        txtHorarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtHorarios.setForeground(new java.awt.Color(255, 255, 255));
-        txtHorarios.setLineWrap(true);
-        txtHorarios.setRows(5);
-        txtHorarios.setWrapStyleWord(true);
-        txtHorarios.setHighlighter(null);
-        scroll.setViewportView(txtHorarios);
-
-        jPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 202, 340, 20));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Repercusiones.png"))); // NOI18N
@@ -207,62 +201,17 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         lblWeb.setText("Página Web: ");
         jPanel1.add(lblWeb, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 100, -1));
 
-        scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        txtTelefono.setEditable(false);
-        txtTelefono.setColumns(20);
-        txtTelefono.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setLineWrap(true);
-        txtTelefono.setRows(5);
-        txtTelefono.setWrapStyleWord(true);
-        txtTelefono.setHighlighter(null);
-        scroll2.setViewportView(txtTelefono);
-
-        jPanel1.add(scroll2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 232, 340, 20));
-
         lblPrecio1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblPrecio1.setForeground(new java.awt.Color(255, 255, 255));
         lblPrecio1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPrecio1.setText("Precio: ");
         jPanel1.add(lblPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 100, 20));
 
-        scroll5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        txtPrecio.setEditable(false);
-        txtPrecio.setColumns(20);
-        txtPrecio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        txtPrecio.setLineWrap(true);
-        txtPrecio.setRows(5);
-        txtPrecio.setWrapStyleWord(true);
-        txtPrecio.setHighlighter(null);
-        scroll5.setViewportView(txtPrecio);
-
-        jPanel1.add(scroll5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 262, 340, 20));
-
         lblUbicacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblUbicacion.setForeground(new java.awt.Color(255, 255, 255));
         lblUbicacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUbicacion.setText("Ubicación: ");
         jPanel1.add(lblUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 100, 20));
-
-        scroll4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        txtUbicacion.setEditable(false);
-        txtUbicacion.setColumns(20);
-        txtUbicacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtUbicacion.setForeground(new java.awt.Color(255, 255, 255));
-        txtUbicacion.setLineWrap(true);
-        txtUbicacion.setRows(5);
-        txtUbicacion.setWrapStyleWord(true);
-        txtUbicacion.setHighlighter(null);
-        scroll4.setViewportView(txtUbicacion);
-
-        jPanel1.add(scroll4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 292, 340, 20));
 
         lblBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnPlus.png"))); // NOI18N
         lblBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -279,6 +228,24 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         });
         jPanel1.add(lblBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 37, -1, 30));
 
+        lblHorariosActividad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lblHorariosActividad.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(lblHorariosActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 320, 20));
+
+        lblTelefonoActividad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lblTelefonoActividad.setForeground(new java.awt.Color(255, 255, 255));
+        lblTelefonoActividad.setToolTipText("");
+        jPanel1.add(lblTelefonoActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 320, 20));
+        lblTelefonoActividad.getAccessibleContext().setAccessibleName("");
+
+        lblPrecioActividad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lblPrecioActividad.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(lblPrecioActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 320, 20));
+
+        lblUbicacionActividad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lblUbicacionActividad.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(lblUbicacionActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 340, 20));
+
         lblpagina.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblpagina.setForeground(new java.awt.Color(0, 51, 204));
         lblpagina.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -287,17 +254,23 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblpaginaMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblpaginaMouseEntered(evt);
+            }
         });
         jPanel1.add(lblpagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 318, 340, 20));
 
-        lblVolver1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnHome.png"))); // NOI18N
-        lblVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lblVolver1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnHome.png"))); // NOI18N
+        lblHome.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblVolver1MouseClicked(evt);
+                lblHomeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblHomeMouseEntered(evt);
             }
         });
-        jPanel1.add(lblVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
+        jPanel1.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/InformacionComercioActividad.png"))); // NOI18N
         jPanel1.add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -312,7 +285,9 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,20 +324,20 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
     }//GEN-LAST:event_lblBotonMouseClicked
 
     private void lblBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseEntered
-        
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblBoton.setCursor(cursor);
     }//GEN-LAST:event_lblBotonMouseEntered
 
     private void lblBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseExited
-       
     }//GEN-LAST:event_lblBotonMouseExited
 
     private void lblpaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblpaginaMouseClicked
+        lblpagina.setForeground(Color.MAGENTA);
         try {
             URI ruta= new URI(cA.getWeb());
             if(java.awt.Desktop.isDesktopSupported()){
                 try{
                     Desktop dk = Desktop.getDesktop();
-
                     dk.browse(ruta);
                 }catch(Exception e){
                     System.out.println("Error al abrir URL: "+e.getMessage());
@@ -373,11 +348,36 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblpaginaMouseClicked
 
-    private void lblVolver1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolver1MouseClicked
+    private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         padre.remove(this);
         padre.add(new pnlInicio(modelo, padre));
         padre.pack();
-    }//GEN-LAST:event_lblVolver1MouseClicked
+    }//GEN-LAST:event_lblHomeMouseClicked
+
+    private void lblVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblVolver.setCursor(cursor);
+    }//GEN-LAST:event_lblVolverMouseEntered
+
+    private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblHome.setCursor(cursor);
+    }//GEN-LAST:event_lblHomeMouseEntered
+
+    private void lblSiguienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSiguienteMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblSiguiente.setCursor(cursor);        // TODO add your handling code here:
+    }//GEN-LAST:event_lblSiguienteMouseEntered
+
+    private void lblAnteriorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnteriorMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblAnterior.setCursor(cursor);
+    }//GEN-LAST:event_lblAnteriorMouseEntered
+
+    private void lblpaginaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblpaginaMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblpagina.setCursor(cursor);
+    }//GEN-LAST:event_lblpaginaMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox comboViajes;
@@ -390,61 +390,41 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
     private javax.swing.JLabel lblBoton;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblGaleria;
+    private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblHorarios;
+    private javax.swing.JLabel lblHorariosActividad;
     private javax.swing.JLabel lblNombreEst;
     private javax.swing.JLabel lblPrecio1;
+    private javax.swing.JLabel lblPrecioActividad;
     private javax.swing.JLabel lblRepercusiones;
     private javax.swing.JLabel lblSiguiente;
     private javax.swing.JLabel lblTelefono;
+    private javax.swing.JLabel lblTelefonoActividad;
     private javax.swing.JLabel lblUbicacion;
+    private javax.swing.JLabel lblUbicacionActividad;
     private javax.swing.JLabel lblVolver;
-    private javax.swing.JLabel lblVolver1;
     private javax.swing.JLabel lblWeb;
     private javax.swing.JLabel lblpagina;
-    private javax.swing.JScrollPane scroll;
     private javax.swing.JScrollPane scroll1;
-    private javax.swing.JScrollPane scroll2;
-    private javax.swing.JScrollPane scroll4;
-    private javax.swing.JScrollPane scroll5;
-    private javax.swing.JTextArea txtHorarios;
     private javax.swing.JTextArea txtIntroduccion;
-    private javax.swing.JTextArea txtPrecio;
-    private javax.swing.JTextArea txtTelefono;
-    private javax.swing.JTextArea txtUbicacion;
     // End of variables declaration//GEN-END:variables
 
     private void cargar() {
         lblNombreEst.setText(cA.getNombre());
         txtIntroduccion.setText(cA.getDetalles());
-        txtHorarios.setText(cA.getHorario());
-        txtTelefono.setText(cA.getTelefono());
-        txtPrecio.setText(cA.getPrecio());
-        txtUbicacion.setText(cA.getUbicacion());
+        lblHorariosActividad.setText(cA.getHorario());
+        lblTelefonoActividad.setText(cA.getTelefono());
+        lblPrecioActividad.setText(cA.getPrecio());
+        lblUbicacionActividad.setText(cA.getUbicacion());
         lblpagina.setText(cA.getWeb());
+        lblpagina.setForeground(Color.BLUE);
         
         txtIntroduccion.setOpaque(false);
-        txtHorarios.setOpaque(false);
-        txtTelefono.setOpaque(false);
-        txtPrecio.setOpaque(false);
-        txtUbicacion.setOpaque(false);
-        
-        scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(false);
-        scroll.setBorder(null);
+
         scroll1.setOpaque(false);
         scroll1.getViewport().setOpaque(false);
         scroll1.setBorder(null);
-        scroll2.setOpaque(false);
-        scroll2.getViewport().setOpaque(false);
-        scroll2.setBorder(null);
         
-        scroll4.setOpaque(false);
-        scroll4.getViewport().setOpaque(false);
-        scroll4.setBorder(null);
-        scroll5.setOpaque(false);
-        scroll5.getViewport().setOpaque(false);
-        scroll5.setBorder(null);   
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(20);
     }
-    
-
 }

@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import descansoApp.dominio.Evento;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import java.awt.Cursor;
 
 public class pResultadoIt3 extends javax.swing.JPanel {
 
@@ -44,7 +45,7 @@ public class pResultadoIt3 extends javax.swing.JPanel {
         lblNombre.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 51, 204));
         lblNombre.setText("Nombre del Evento");
-        lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNombreMouseClicked(evt);
@@ -55,10 +56,13 @@ public class pResultadoIt3 extends javax.swing.JPanel {
         lblUbicacion.setText("(Ubicacion)");
 
         lblEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Editar.png"))); // NOI18N
-        lblEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblEditarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblEditarMouseEntered(evt);
             }
         });
 
@@ -98,6 +102,11 @@ public class pResultadoIt3 extends javax.swing.JPanel {
         miVentana.add(new pnlInformacionEvento(modelo, viaje, evento, miVentana));
         miVentana.pack();        
     }//GEN-LAST:event_lblNombreMouseClicked
+
+    private void lblEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblEditar.setCursor(cursor);
+    }//GEN-LAST:event_lblEditarMouseEntered
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblEditar;

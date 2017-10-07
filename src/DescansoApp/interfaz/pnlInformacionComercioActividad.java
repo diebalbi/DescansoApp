@@ -30,7 +30,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         cA = unCA;
         padre = unPadre;
         ciudad = unaCiudad;
-        if(!cA.getImagenes().isEmpty()){
+        if(cA.getImagenes().isEmpty()){
             //lblGaleria.setIcon(); Cargar una imagen por defecto
             lblSiguiente.setVisible(false);
             lblAnterior.setVisible(false);

@@ -140,6 +140,10 @@ public class pnlDondeQue extends javax.swing.JPanel {
         add(lblInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Fondo.png"))); // NOI18N
+        lblFondo.setMaximumSize(new java.awt.Dimension(840, 500));
+        lblFondo.setMinimumSize(new java.awt.Dimension(840, 500));
+        lblFondo.setName(""); // NOI18N
+        lblFondo.setPreferredSize(new java.awt.Dimension(840, 500));
         add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

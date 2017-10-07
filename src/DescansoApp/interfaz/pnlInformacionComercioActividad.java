@@ -12,6 +12,7 @@ import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 import descansoApp.dominio.Ciudad;
+import descansoApp.dominio.Evento;
 import java.awt.Color;
 import java.awt.Cursor;
 
@@ -222,9 +223,6 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblBotonMouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblBotonMouseExited(evt);
-            }
         });
         jPanel1.add(lblBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 37, -1, 30));
 
@@ -236,7 +234,6 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         lblTelefonoActividad.setForeground(new java.awt.Color(255, 255, 255));
         lblTelefonoActividad.setToolTipText("");
         jPanel1.add(lblTelefonoActividad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 320, 20));
-        lblTelefonoActividad.getAccessibleContext().setAccessibleName("");
 
         lblPrecioActividad.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lblPrecioActividad.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,8 +313,11 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
     }//GEN-LAST:event_lblSiguienteMouseClicked
 
     private void lblBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseClicked
+        Evento evento = new Evento();
+        evento.setNombre(lblNombreEst.getText());
+        evento.setUbicacion(lblUbicacionActividad.getText());
         PopUp p = new PopUp();
-        p.add(new pnlEvento(modelo, (Viaje) comboViajes.getSelectedItem(), ciudad, null, p));
+        p.add(new pnlEvento(modelo, (Viaje) comboViajes.getSelectedItem(), ciudad, evento, p, true));
         p.pack();
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -327,9 +327,6 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         lblBoton.setCursor(cursor);
     }//GEN-LAST:event_lblBotonMouseEntered
-
-    private void lblBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseExited
-    }//GEN-LAST:event_lblBotonMouseExited
 
     private void lblpaginaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblpaginaMouseClicked
         lblpagina.setForeground(Color.MAGENTA);

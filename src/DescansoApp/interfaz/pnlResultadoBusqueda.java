@@ -63,7 +63,6 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
             }
         });
         add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
-        lblVolver.getAccessibleContext().setAccessibleName("");
 
         lblBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Lupa.png"))); // NOI18N
         lblBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

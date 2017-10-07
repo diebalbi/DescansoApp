@@ -36,6 +36,7 @@ public class pResultadoIt3 extends javax.swing.JPanel {
         lblNombre = new javax.swing.JLabel();
         lblUbicacion = new javax.swing.JLabel();
         lblEditar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
 
@@ -46,6 +47,11 @@ public class pResultadoIt3 extends javax.swing.JPanel {
         lblNombre.setForeground(new java.awt.Color(0, 51, 204));
         lblNombre.setText("Nombre del Evento");
         lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblNombre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblNombreMouseMoved(evt);
+            }
+        });
         lblNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNombreMouseClicked(evt);
@@ -66,20 +72,24 @@ public class pResultadoIt3 extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Hora inicio:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblHora)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUbicacion)
                 .addGap(18, 18, 18)
                 .addComponent(lblEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,13 +97,14 @@ public class pResultadoIt3 extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lblHora)
                 .addComponent(lblNombre)
-                .addComponent(lblUbicacion))
+                .addComponent(lblUbicacion)
+                .addComponent(jLabel1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseClicked
         miVentana.remove(miPanel);
-        miVentana.add(new pnlEvento(modelo, viaje, evento.getCiudad(), evento, miVentana));
+        miVentana.add(new pnlEvento(modelo, viaje, evento.getCiudad(), evento, miVentana, false));
         miVentana.pack();
     }//GEN-LAST:event_lblEditarMouseClicked
 
@@ -108,7 +119,13 @@ public class pResultadoIt3 extends javax.swing.JPanel {
         lblEditar.setCursor(cursor);
     }//GEN-LAST:event_lblEditarMouseEntered
 
+    private void lblNombreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblNombre.setCursor(cursor);
+    }//GEN-LAST:event_lblNombreMouseMoved
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblEditar;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblNombre;

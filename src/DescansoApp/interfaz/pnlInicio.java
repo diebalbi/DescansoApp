@@ -15,7 +15,12 @@ public class pnlInicio extends javax.swing.JPanel {
     public pnlInicio(Sistema unModelo, JFrame miPadre) {
         initComponents();
         modelo = unModelo;
-        padre = miPadre;
+        padre = miPadre;       
+        textIntroduccion.setText("Bienvenido a DescansoApp la aplicación que le permitirá recorrer Uruguay en breves minutos y así poder decidir las ciudades que desea visitar. No solo le permitimos conocer posibles destinos, sino que podrá ver distintas opciones de donde hospedarse, ir a comer, y algunos de los lugares más visitados como fiestas populares, paseos, entre otros. De esta forma podrá planificar y tener un completo registro del viaje que usted desea.");
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBorder(null);
+        textIntroduccion.setOpaque(false);        
     }
 
     @SuppressWarnings("unchecked")
@@ -25,9 +30,12 @@ public class pnlInicio extends javax.swing.JPanel {
         lblNuevoViaje = new javax.swing.JLabel();
         lblMisViajes = new javax.swing.JLabel();
         lblBuscar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
         lblBuscador = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textIntroduccion = new javax.swing.JTextArea();
         lblImagen = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(840, 500));
@@ -49,7 +57,7 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblNuevoViaje);
-        lblNuevoViaje.setBounds(100, 210, 132, 40);
+        lblNuevoViaje.setBounds(100, 290, 132, 40);
 
         lblMisViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnMisViajes.png"))); // NOI18N
         lblMisViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -65,7 +73,7 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblMisViajes);
-        lblMisViajes.setBounds(100, 270, 132, 40);
+        lblMisViajes.setBounds(100, 350, 132, 40);
 
         lblBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Lupa.png"))); // NOI18N
         lblBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -78,7 +86,23 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(lblBuscar);
-        lblBuscar.setBounds(720, 270, 20, 20);
+        lblBuscar.setBounds(720, 350, 20, 20);
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnPlus.png"))); // NOI18N
+        jLabel1.setText("Para ver las posibles busquedas Click aqui.");
+        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel1MouseMoved(evt);
+            }
+        });
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        add(jLabel1);
+        jLabel1.setBounds(410, 380, 280, 18);
 
         txtBuscador.setBackground(new java.awt.Color(102, 102, 102));
         txtBuscador.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -93,17 +117,39 @@ public class pnlInicio extends javax.swing.JPanel {
             }
         });
         add(txtBuscador);
-        txtBuscador.setBounds(370, 270, 340, 22);
+        txtBuscador.setBounds(370, 350, 340, 22);
 
         lblBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Buscador.png"))); // NOI18N
         add(lblBuscador);
-        lblBuscador.setBounds(330, 180, 440, 160);
+        lblBuscador.setBounds(330, 260, 440, 160);
 
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Titulo.png"))); // NOI18N
         lblTitulo.setToolTipText("");
         add(lblTitulo);
         lblTitulo.setBounds(280, 50, 260, 60);
+
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        textIntroduccion.setEditable(false);
+        textIntroduccion.setColumns(20);
+        textIntroduccion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textIntroduccion.setForeground(new java.awt.Color(0, 0, 0));
+        textIntroduccion.setLineWrap(true);
+        textIntroduccion.setRows(4);
+        textIntroduccion.setTabSize(4);
+        textIntroduccion.setToolTipText("");
+        textIntroduccion.setWrapStyleWord(true);
+        textIntroduccion.setAutoscrolls(false);
+        textIntroduccion.setBorder(null);
+        textIntroduccion.setHighlighter(null);
+        jScrollPane1.setViewportView(textIntroduccion);
+
+        add(jScrollPane1);
+        jScrollPane1.setBounds(80, 130, 690, 120);
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/FondoInicio.png"))); // NOI18N
         lblImagen.setPreferredSize(new java.awt.Dimension(800, 450));
@@ -172,6 +218,24 @@ public class pnlInicio extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscadorKeyTyped
 
+    private void jLabel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        jLabel1.setCursor(cursor);
+    }//GEN-LAST:event_jLabel1MouseMoved
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if(modelo.getListaCiudades().isEmpty()){
+            JOptionPane.showMessageDialog(padre, "No hay busquedas posibles.");
+        }
+        else{
+            PopUp p= new PopUp();
+            p.add(new pnlCiudadesActuales(modelo, p));
+            p.pack();
+            p.setLocationRelativeTo(null);
+            p.setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     private void buscar() {
         int cantidadLetrasPermitidas = 30;
         if (txtBuscador.getText().length() <= 3) {
@@ -188,12 +252,15 @@ public class pnlInicio extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscador;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblImagen;
     public javax.swing.JLabel lblMisViajes;
     public javax.swing.JLabel lblNuevoViaje;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextArea textIntroduccion;
     private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables
 }

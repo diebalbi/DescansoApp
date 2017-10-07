@@ -48,19 +48,6 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
         lblNombre.setForeground(new java.awt.Color(0, 0, 204));
         lblNombre.setText("Nombre de DondeQue");
         lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lblNombre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                lblNombreMouseMoved(evt);
-            }
-        });
-        lblNombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNombreMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblNombreMouseExited(evt);
-            }
-        });
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -110,22 +97,6 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseClicked
-        ventana.remove(padre);
-        ventana.add(new pnlInformacionComercioActividad(modelo, cA, ventana,ciudad));
-        ventana.pack();
-    }//GEN-LAST:event_lblNombreMouseClicked
-
-    private void lblNombreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseMoved
-        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-        lblNombre.setCursor(cursor);
-        lblNombre.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_lblNombreMouseMoved
-
-    private void lblNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseExited
-        lblNombre.setForeground(Color.BLUE);
-    }//GEN-LAST:event_lblNombreMouseExited
 
     private void lblInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInformacionMouseClicked
         ventana.remove(padre);

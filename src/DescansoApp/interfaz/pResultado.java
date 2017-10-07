@@ -36,6 +36,7 @@ public class pResultado extends javax.swing.JPanel {
         scroll = new javax.swing.JScrollPane();
         lblDes = new javax.swing.JTextArea();
         lblNombre = new javax.swing.JLabel();
+        lblInformacion = new javax.swing.JLabel();
 
         setOpaque(false);
 
@@ -56,15 +57,17 @@ public class pResultado extends javax.swing.JPanel {
         lblNombre.setForeground(new java.awt.Color(0, 0, 204));
         lblNombre.setText("Nombre Ciudad");
         lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lblNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        lblInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnPlus.png"))); // NOI18N
+        lblInformacion.setText("Mas información");
+        lblInformacion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblInformacionMouseMoved(evt);
+            }
+        });
+        lblInformacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNombreMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblNombreMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblNombreMouseExited(evt);
+                lblInformacionMouseClicked(evt);
             }
         });
 
@@ -72,39 +75,39 @@ public class pResultado extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scroll, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(620, 620, 620))
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addComponent(scroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseClicked
+    private void lblInformacionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInformacionMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblInformacion.setCursor(cursor);
+    }//GEN-LAST:event_lblInformacionMouseMoved
+
+    private void lblInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInformacionMouseClicked
         ventana.remove(padre);
         ventana.add(new pnlInformacionCiudad(modelo, ciudad, ventana));
         ventana.pack();
-    }//GEN-LAST:event_lblNombreMouseClicked
-
-    private void lblNombreMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseEntered
-        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-        lblNombre.setCursor(cursor);
-        lblNombre.setForeground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_lblNombreMouseEntered
-
-    private void lblNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseExited
-        lblNombre.setForeground(Color.BLUE);
-    }//GEN-LAST:event_lblNombreMouseExited
+    }//GEN-LAST:event_lblInformacionMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea lblDes;
+    private javax.swing.JLabel lblInformacion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables

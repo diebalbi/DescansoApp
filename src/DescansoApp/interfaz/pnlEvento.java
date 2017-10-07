@@ -4,9 +4,7 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import descansoApp.dominio.Evento;
-import descansoApp.dominio.Sistema;
-import descansoApp.dominio.Viaje;
+import descansoApp.dominio.*;
 import descansoApp.herramientas.Utilidades;
 import descansoApp.herramientas.ValidarNumero;
 import java.awt.Cursor;
@@ -15,11 +13,11 @@ public class pnlEvento extends javax.swing.JPanel {
 
     private Viaje viaje;
     private Evento modEvento;
-    private descansoApp.dominio.Ciudad ciudad;
+    private Ciudad ciudad;
     private JFrame miVentana;
     private Sistema modelo;
 
-    public pnlEvento(Sistema unModelo, Viaje unViaje, descansoApp.dominio.Ciudad unaCiudad, Evento unEvento, JFrame unContenedor) {
+    public pnlEvento(Sistema unModelo, Viaje unViaje, descansoApp.dominio.Ciudad unaCiudad, Evento unEvento, JFrame unContenedor, boolean esNuevo) {
         initComponents();
         modelo = unModelo;
         viaje = unViaje;
@@ -27,20 +25,12 @@ public class pnlEvento extends javax.swing.JPanel {
         ciudad = unaCiudad;
         miVentana = unContenedor;
         restringirCampos();
-        
+        cargarEvento();
+                
         if (modEvento == null) {
             lblEliminar1.setVisible(false);
         } else {
             lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/ModificarEvento.png")));
-            txtNombre.setText(modEvento.getNombre());
-            txtDescripcion.setText(modEvento.getDescripcion());
-            txtHoraIHoras.setText("" + modEvento.getFechaHoraI().get(Calendar.HOUR));
-            txtHoraIMinutos.setText("" + modEvento.getFechaHoraI().get(Calendar.MINUTE));
-            txtHoraFHoras.setText("" + modEvento.getFechaHoraF().get(Calendar.HOUR));
-            txtHoraFMinutos.setText("" + modEvento.getFechaHoraF().get(Calendar.MINUTE));
-            txtUbicacion.setText(modEvento.getUbicacion());
-            dChosserFechaI.setCalendar(modEvento.getFechaHoraI());
-            dChosserFechaF.setCalendar(modEvento.getFechaHoraF());
         }
     }
     
@@ -57,6 +47,18 @@ public class pnlEvento extends javax.swing.JPanel {
         editor.setEditable(false);
         JTextFieldDateEditor editor2 = (JTextFieldDateEditor) dChosserFechaI.getDateEditor();
         editor2.setEditable(false);
+    }
+    
+    private void cargarEvento() {
+            txtNombre.setText(modEvento.getNombre());
+            txtDescripcion.setText(modEvento.getDescripcion());
+            txtHoraIHoras.setText("" + modEvento.getFechaHoraI().get(Calendar.HOUR_OF_DAY));
+            txtHoraIMinutos.setText("" + modEvento.getFechaHoraI().get(Calendar.MINUTE));
+            txtHoraFHoras.setText("" + modEvento.getFechaHoraF().get(Calendar.HOUR_OF_DAY));
+            txtHoraFMinutos.setText("" + modEvento.getFechaHoraF().get(Calendar.MINUTE));
+            txtUbicacion.setText(modEvento.getUbicacion());
+            dChosserFechaI.setCalendar(modEvento.getFechaHoraI());
+            dChosserFechaF.setCalendar(modEvento.getFechaHoraF());
     }
     
     @SuppressWarnings("unchecked")
@@ -106,11 +108,6 @@ public class pnlEvento extends javax.swing.JPanel {
         txtNombre.setBorder(null);
         txtNombre.setCaretColor(new java.awt.Color(204, 204, 204));
         txtNombre.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 130, 18));
 
         dChosserFechaI.setBackground(new java.awt.Color(51, 51, 51));
@@ -125,71 +122,41 @@ public class pnlEvento extends javax.swing.JPanel {
         txtHoraIMinutos.setForeground(new java.awt.Color(204, 204, 204));
         txtHoraIMinutos.setCaretColor(new java.awt.Color(204, 204, 204));
         txtHoraIMinutos.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        txtHoraIMinutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraIMinutosActionPerformed(evt);
-            }
-        });
-        txtHoraIMinutos.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHoraIMinutosKeyTyped(evt);
-            }
-        });
-        add(txtHoraIMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 19, 18));
+        add(txtHoraIMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 22, 18));
 
         txtUbicacion.setBackground(new java.awt.Color(51, 51, 51));
         txtUbicacion.setForeground(new java.awt.Color(204, 204, 204));
         txtUbicacion.setBorder(null);
         txtUbicacion.setCaretColor(new java.awt.Color(204, 204, 204));
         txtUbicacion.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        txtUbicacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUbicacionActionPerformed(evt);
-            }
-        });
         add(txtUbicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 130, 18));
 
         jLabel1.setText(" :");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 10, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 120, 10, 20));
 
         jLabel5.setText(" :");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 10, 20));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 180, 10, 20));
 
         txtHoraFHoras.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraFHoras.setBorder(null);
         txtHoraFHoras.setForeground(new java.awt.Color(204, 204, 204));
         txtHoraFHoras.setCaretColor(new java.awt.Color(204, 204, 204));
         txtHoraFHoras.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        txtHoraFHoras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraFHorasActionPerformed(evt);
-            }
-        });
-        add(txtHoraFHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 19, 18));
+        add(txtHoraFHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 22, 18));
 
         txtHoraIHoras.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraIHoras.setBorder(null);
         txtHoraIHoras.setForeground(new java.awt.Color(204, 204, 204));
         txtHoraIHoras.setCaretColor(new java.awt.Color(204, 204, 204));
         txtHoraIHoras.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        txtHoraIHoras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraIHorasActionPerformed(evt);
-            }
-        });
-        add(txtHoraIHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 19, 18));
+        add(txtHoraIHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 22, 18));
 
         txtHoraFMinutos.setBackground(new java.awt.Color(51, 51, 51));
         txtHoraFMinutos.setBorder(null);
         txtHoraFMinutos.setForeground(new java.awt.Color(204, 204, 204));
         txtHoraFMinutos.setCaretColor(new java.awt.Color(204, 204, 204));
         txtHoraFMinutos.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        txtHoraFMinutos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHoraFMinutosActionPerformed(evt);
-            }
-        });
-        add(txtHoraFMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 19, 18));
+        add(txtHoraFMinutos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 22, 18));
 
         lblGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnGuardar.png"))); // NOI18N
         lblGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -220,9 +187,6 @@ public class pnlEvento extends javax.swing.JPanel {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblEliminar1MouseEntered(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblEliminar1MouseExited(evt);
-            }
         });
         add(lblEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, 30));
 
@@ -241,30 +205,6 @@ public class pnlEvento extends javax.swing.JPanel {
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/AgregarEvento.png"))); // NOI18N
         add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtHoraIMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraIMinutosActionPerformed
-
-    }//GEN-LAST:event_txtHoraIMinutosActionPerformed
-
-    private void txtUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUbicacionActionPerformed
-
-    }//GEN-LAST:event_txtUbicacionActionPerformed
-
-    private void txtHoraFHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraFHorasActionPerformed
-
-    }//GEN-LAST:event_txtHoraFHorasActionPerformed
-
-    private void txtHoraIHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraIHorasActionPerformed
-
-    }//GEN-LAST:event_txtHoraIHorasActionPerformed
-
-    private void txtHoraFMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraFMinutosActionPerformed
-
-    }//GEN-LAST:event_txtHoraFMinutosActionPerformed
 
     private void lblGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardarMouseEntered
         lblGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnGuardarONN.png")));
@@ -351,10 +291,6 @@ public class pnlEvento extends javax.swing.JPanel {
         lblEliminar1.setCursor(cursor);        
     }//GEN-LAST:event_lblEliminar1MouseEntered
 
-    private void lblEliminar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseExited
-
-    }//GEN-LAST:event_lblEliminar1MouseExited
-
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         miVentana.remove(this);
         miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
@@ -370,9 +306,6 @@ public class pnlEvento extends javax.swing.JPanel {
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         lblGuardar.setCursor(cursor);
     }//GEN-LAST:event_lblGuardarMouseMoved
-
-    private void txtHoraIMinutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraIMinutosKeyTyped
-    }//GEN-LAST:event_txtHoraIMinutosKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

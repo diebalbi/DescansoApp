@@ -48,6 +48,7 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         pnl = new javax.swing.JPanel();
         lblHome = new javax.swing.JLabel();
+        lblVolver = new javax.swing.JLabel();
         lblNombreCiudad = new javax.swing.JLabel();
         lblDondeDormir = new javax.swing.JLabel();
         lblDondeComer = new javax.swing.JLabel();
@@ -83,12 +84,24 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
                 lblHomeMouseEntered(evt);
             }
         });
-        pnl.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
+        pnl.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
+
+        lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
+        lblVolver.setText("jLabel1");
+        lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblVolverMouseEntered(evt);
+            }
+        });
+        pnl.add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 38, 30, 30));
 
         lblNombreCiudad.setFont(new java.awt.Font("Arial", 0, 26)); // NOI18N
         lblNombreCiudad.setForeground(new java.awt.Color(51, 51, 51));
         lblNombreCiudad.setText("Nombre de la Ciudad");
-        pnl.add(lblNombreCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 36, -1, -1));
+        pnl.add(lblNombreCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 36, 400, 30));
 
         lblDondeDormir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnDondeDormir.png"))); // NOI18N
         lblDondeDormir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -366,6 +379,17 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
         lblAnterior.setCursor(cursor);
     }//GEN-LAST:event_lblAnteriorMouseEntered
 
+    private void lblVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblVolver.setCursor(cursor);
+    }//GEN-LAST:event_lblVolverMouseEntered
+
+    private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
+        padre.remove(this);
+        padre.add(new pnlResultadoBusqueda(modelo, padre, ciudad.getNombre()));
+        padre.pack();
+    }//GEN-LAST:event_lblVolverMouseClicked
+
     private void cargar() {
         lblNombreCiudad.setText(ciudad.getNombre());
         txtIntroduccion.setText(ciudad.getDescripcion());
@@ -388,6 +412,7 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
     private javax.swing.JLabel lblQueHacer;
     private javax.swing.JLabel lblRepercusiones;
     private javax.swing.JLabel lblSiguiente;
+    private javax.swing.JLabel lblVolver;
     private javax.swing.JPanel pnl;
     private javax.swing.JPanel pnlContenedor;
     private javax.swing.JScrollPane scroll1;

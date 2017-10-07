@@ -28,6 +28,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
     private void initComponents() {
 
         lblHome = new javax.swing.JLabel();
+        lblVolver = new javax.swing.JLabel();
         lblBuscar = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
         lblNoHay = new javax.swing.JLabel();
@@ -50,7 +51,19 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
                 lblHomeMouseEntered(evt);
             }
         });
-        add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
+        add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 38, 30, 30));
+
+        lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
+        lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblVolverMouseEntered(evt);
+            }
+        });
+        add(lblVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 38, 30, 30));
+        lblVolver.getAccessibleContext().setAccessibleName("");
 
         lblBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Lupa.png"))); // NOI18N
         lblBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -86,7 +99,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         lblTitulo.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Resultados de la búsqueda");
-        add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 38, -1, -1));
+        add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 36, 400, 30));
 
         javax.swing.GroupLayout pnlResultadosLayout = new javax.swing.GroupLayout(pnlResultados);
         pnlResultados.setLayout(pnlResultadosLayout);
@@ -146,6 +159,17 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
         lblHome.setCursor(cursor);
     }//GEN-LAST:event_lblHomeMouseEntered
 
+    private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
+        padre.remove(this);
+        padre.add(new pnlInicio(modelo,padre));
+        padre.pack();
+    }//GEN-LAST:event_lblVolverMouseClicked
+
+    private void lblVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseEntered
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblVolver.setCursor(cursor);
+    }//GEN-LAST:event_lblVolverMouseEntered
+
     private void busqueda(String unaPalabra) {
         pnlResultados.removeAll();
         pnlResultados.revalidate();
@@ -177,6 +201,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
     private javax.swing.JLabel lblHome;
     private javax.swing.JLabel lblNoHay;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblVolver;
     private javax.swing.JPanel pnlResultados;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JTextField txtBuscador;

@@ -11,7 +11,7 @@ import descansoApp.herramientas.TipoCA;
 import java.awt.Cursor;
 import javax.swing.JComponent;
 
-public class pnlDondeQue extends javax.swing.JPanel {
+public class PnlDondeQue extends javax.swing.JPanel {
 
     private Sistema modelo;
     private descansoApp.dominio.Ciudad ciudad;
@@ -19,7 +19,7 @@ public class pnlDondeQue extends javax.swing.JPanel {
     ArrayList<ComercioActividad> lista;
     ArrayList<String> filtros;
 
-    public pnlDondeQue(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unPadre, TipoCA unTipo) {
+    public PnlDondeQue(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unPadre, TipoCA unTipo) {
         initComponents();
         pnlResultados.setOpaque(false);
         pnlResultados.setLayout(new BoxLayout(pnlResultados, BoxLayout.PAGE_AXIS));
@@ -46,6 +46,8 @@ public class pnlDondeQue extends javax.swing.JPanel {
             case actividad:
                 lista = ciudad.getActividades();
                 lblTitulo.setText("¿Qué hacer?");
+                break;
+            default:
                 break;
         }
 
@@ -154,7 +156,7 @@ public class pnlDondeQue extends javax.swing.JPanel {
         while (it.hasNext()) {
             ComercioActividad actual = it.next();
             if (filtros.get(lstFiltros.getSelectedIndex()).equals(actual.getCategoria())) {
-                pResultadoDondeQue p = new pResultadoDondeQue(modelo, actual, padre, this, ciudad);
+                PResultadoDondeQue p = new PResultadoDondeQue(modelo, actual, padre, this, ciudad);
                 pnlResultados.add(p);
             }
         }
@@ -165,13 +167,13 @@ public class pnlDondeQue extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         padre.remove(this);
-        padre.add(new pnlInformacionCiudad(modelo, ciudad, padre));
+        padre.add(new PnlInformacionCiudad(modelo, ciudad, padre));
         padre.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 
     private void lblInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInicioMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo, padre));
+        padre.add(new PnlInicio(modelo, padre));
         padre.pack();
     }//GEN-LAST:event_lblInicioMouseClicked
 

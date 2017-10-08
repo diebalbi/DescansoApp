@@ -1,8 +1,8 @@
 package descansoApp.interfaz;
 
-public class pResultadoIt1 extends javax.swing.JPanel {
+public class PResultadoIt1 extends javax.swing.JPanel {
 
-    public pResultadoIt1(String unaCiudad) {
+    public PResultadoIt1(String unaCiudad) {
         initComponents();
         lblNombre.setText(unaCiudad);
     }

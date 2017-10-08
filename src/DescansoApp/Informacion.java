@@ -6,8 +6,16 @@ import descansoApp.dominio.Ciudad;
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.herramientas.TipoCA;
 
+/**
+ *
+ * @author Fido
+ */
 public class Informacion {
 
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Ciudad> ciudades() {
         ArrayList<String> cdades = BaseDatos.ciudades();
         int parte = -1;
@@ -138,7 +146,7 @@ public class Informacion {
     }
 
     private static int averiguarParte2(String linea) {
-        int parte = -2;
+        int parte;
         switch (linea) {
             case "#nombre":
                 parte = 0;

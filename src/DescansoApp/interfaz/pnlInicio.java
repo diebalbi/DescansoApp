@@ -7,12 +7,12 @@ import javax.swing.JOptionPane;
 import descansoApp.dominio.Sistema;
 import java.awt.Cursor;
 
-public class pnlInicio extends javax.swing.JPanel {
+public class PnlInicio extends javax.swing.JPanel {
 
     private Sistema modelo;
     private JFrame padre;
 
-    public pnlInicio(Sistema unModelo, JFrame miPadre) {
+    public PnlInicio(Sistema unModelo, JFrame miPadre) {
         initComponents();
         modelo = unModelo;
         padre = miPadre;       
@@ -30,12 +30,13 @@ public class pnlInicio extends javax.swing.JPanel {
         lblNuevoViaje = new javax.swing.JLabel();
         lblMisViajes = new javax.swing.JLabel();
         lblBuscar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblCiudadesActuales = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
         lblBuscador = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textIntroduccion = new javax.swing.JTextArea();
+        lblNuevaCiudad = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(840, 500));
@@ -88,21 +89,21 @@ public class pnlInicio extends javax.swing.JPanel {
         add(lblBuscar);
         lblBuscar.setBounds(720, 350, 20, 20);
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnPlus.png"))); // NOI18N
-        jLabel1.setText("Para ver las posibles busquedas Click aqui.");
-        jLabel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        lblCiudadesActuales.setForeground(new java.awt.Color(0, 0, 0));
+        lblCiudadesActuales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Lupa.png"))); // NOI18N
+        lblCiudadesActuales.setText("Para ver las posibles busquedas Click aqui.");
+        lblCiudadesActuales.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jLabel1MouseMoved(evt);
+                lblCiudadesActualesMouseMoved(evt);
             }
         });
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblCiudadesActuales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblCiudadesActualesMouseClicked(evt);
             }
         });
-        add(jLabel1);
-        jLabel1.setBounds(410, 380, 280, 18);
+        add(lblCiudadesActuales);
+        lblCiudadesActuales.setBounds(410, 380, 280, 17);
 
         txtBuscador.setBackground(new java.awt.Color(102, 102, 102));
         txtBuscador.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -151,6 +152,22 @@ public class pnlInicio extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(80, 130, 690, 120);
 
+        lblNuevaCiudad.setForeground(new java.awt.Color(0, 0, 0));
+        lblNuevaCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnPlus.png"))); // NOI18N
+        lblNuevaCiudad.setText("Para agregar nuevas ciudades Click aqui.");
+        lblNuevaCiudad.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblNuevaCiudadMouseMoved(evt);
+            }
+        });
+        lblNuevaCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNuevaCiudadMouseClicked(evt);
+            }
+        });
+        add(lblNuevaCiudad);
+        lblNuevaCiudad.setBounds(250, 450, 260, 18);
+
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/FondoInicio.png"))); // NOI18N
         lblImagen.setPreferredSize(new java.awt.Dimension(800, 450));
         lblImagen.setVerifyInputWhenFocusTarget(false);
@@ -180,7 +197,7 @@ public class pnlInicio extends javax.swing.JPanel {
 
     private void lblNuevoViajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevoViajeMouseClicked
         PopUp p = new PopUp();
-        p.add(new pnlNuevoViaje(modelo, p, null));
+        p.add(new PnlNuevoViaje(modelo, p, null));
         p.pack();
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -192,7 +209,7 @@ public class pnlInicio extends javax.swing.JPanel {
         }
         else{
             PopUp p= new PopUp();
-            p.add(new pnlMisViajes(modelo, p));
+            p.add(new PnlMisViajes(modelo, p));
             p.pack();
             p.setLocationRelativeTo(null);
             p.setVisible(true);
@@ -218,23 +235,34 @@ public class pnlInicio extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscadorKeyTyped
 
-    private void jLabel1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseMoved
+    private void lblCiudadesActualesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCiudadesActualesMouseMoved
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-        jLabel1.setCursor(cursor);
-    }//GEN-LAST:event_jLabel1MouseMoved
+        lblCiudadesActuales.setCursor(cursor);
+    }//GEN-LAST:event_lblCiudadesActualesMouseMoved
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblCiudadesActualesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCiudadesActualesMouseClicked
         if(modelo.getListaCiudades().isEmpty()){
             JOptionPane.showMessageDialog(padre, "No hay busquedas posibles.");
         }
         else{
             PopUp p= new PopUp();
-            p.add(new pnlCiudadesActuales(modelo, p));
+            p.add(new PnlCiudadesActuales(modelo, p));
             p.pack();
             p.setLocationRelativeTo(null);
             p.setVisible(true);
         }
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblCiudadesActualesMouseClicked
+
+    private void lblNuevaCiudadMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevaCiudadMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblNuevaCiudad.setCursor(cursor);
+    }//GEN-LAST:event_lblNuevaCiudadMouseMoved
+
+    private void lblNuevaCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNuevaCiudadMouseClicked
+        padre.remove(this);
+        padre.add(new PnlNuevaCiudad(modelo, padre), BorderLayout.WEST);
+        padre.pack();
+    }//GEN-LAST:event_lblNuevaCiudadMouseClicked
 
     private void buscar() {
         int cantidadLetrasPermitidas = 30;
@@ -246,18 +274,19 @@ public class pnlInicio extends javax.swing.JPanel {
         }
         else {
             padre.remove(this);
-            padre.add(new pnlResultadoBusqueda(modelo, padre, txtBuscador.getText()), BorderLayout.WEST);
+            padre.add(new PnlResultadoBusqueda(modelo, padre, txtBuscador.getText()), BorderLayout.WEST);
             padre.pack();
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuscador;
     private javax.swing.JLabel lblBuscar;
+    private javax.swing.JLabel lblCiudadesActuales;
     private javax.swing.JLabel lblImagen;
     public javax.swing.JLabel lblMisViajes;
+    private javax.swing.JLabel lblNuevaCiudad;
     public javax.swing.JLabel lblNuevoViaje;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextArea textIntroduccion;

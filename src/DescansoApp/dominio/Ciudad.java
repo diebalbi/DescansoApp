@@ -74,6 +74,8 @@ public class Ciudad implements Serializable {
             case actividad:
                 actividades.add(cA);
                 break;
+            default:
+                break;
         }
     }
     

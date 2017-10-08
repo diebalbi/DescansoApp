@@ -7,7 +7,7 @@ import descansoApp.dominio.Sistema;
 import static descansoApp.herramientas.TipoCA.*;
 import java.awt.Cursor;
 
-public class pnlInformacionCiudad extends javax.swing.JPanel {
+public class PnlInformacionCiudad extends javax.swing.JPanel {
 
     private Sistema modelo;
     private descansoApp.dominio.Ciudad ciudad;
@@ -15,7 +15,7 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
     int contador = 0;
     private ArrayList<ImageIcon> listaImagenes;
 
-    public pnlInformacionCiudad(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unPadre) {
+    public PnlInformacionCiudad(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unPadre) {
         initComponents();
         modelo = unModelo;
         ciudad = unaCiudad;
@@ -336,31 +336,31 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
 
     private void lblDondeDormirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDondeDormirMouseClicked
         padre.remove(this);
-        padre.add(new pnlDondeQue(modelo, ciudad, padre, alojamiento));
+        padre.add(new PnlDondeQue(modelo, ciudad, padre, alojamiento));
         padre.pack();
     }//GEN-LAST:event_lblDondeDormirMouseClicked
 
     private void lblDondeComerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDondeComerMouseClicked
         padre.remove(this);
-        padre.add(new pnlDondeQue(modelo, ciudad, padre, estGastronomico));
+        padre.add(new PnlDondeQue(modelo, ciudad, padre, estGastronomico));
         padre.pack();
     }//GEN-LAST:event_lblDondeComerMouseClicked
 
     private void lblQueHacerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQueHacerMouseClicked
         padre.remove(this);
-        padre.add(new pnlDondeQue(modelo, ciudad, padre, actividad));
+        padre.add(new PnlDondeQue(modelo, ciudad, padre, actividad));
         padre.pack();
     }//GEN-LAST:event_lblQueHacerMouseClicked
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo, padre));
+        padre.add(new PnlInicio(modelo, padre));
         padre.pack();
     }//GEN-LAST:event_lblHomeMouseClicked
 
     private void lblQueEstaCercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQueEstaCercaMouseClicked
         padre.remove(this);
-        padre.add(new pnlMapas(modelo, ciudad, padre));
+        padre.add(new PnlMapas(modelo, ciudad, padre));
         padre.pack();
     }//GEN-LAST:event_lblQueEstaCercaMouseClicked
 
@@ -386,7 +386,7 @@ public class pnlInformacionCiudad extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         padre.remove(this);
-        padre.add(new pnlResultadoBusqueda(modelo, padre, ciudad.getNombre()));
+        padre.add(new PnlResultadoBusqueda(modelo, padre, ciudad.getNombre()));
         padre.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 

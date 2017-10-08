@@ -5,8 +5,17 @@ import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author Fido
+ */
 public class Utilidades {
 
+    /**
+     *
+     * @param f
+     * @return
+     */
     public static Calendar soloFecha(Calendar f) {
         f.set(Calendar.HOUR, 0);
         f.set(Calendar.HOUR_OF_DAY, 0);
@@ -16,6 +25,10 @@ public class Utilidades {
         return f;
     }
    
+    /**
+     *
+     * @param f
+     */
     public static void imprimirFecha(Calendar f) {
         System.out.println(f.get(Calendar.DAY_OF_MONTH));
         System.out.println(f.get(Calendar.MONTH));
@@ -25,8 +38,13 @@ public class Utilidades {
         System.out.println(f.get(Calendar.MINUTE));
     }
     
+    /**
+     *
+     * @param campo
+     */
     public static void soloNumeros(JTextField campo){
         campo.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyTyped(KeyEvent key){
                 char caracter = key.getKeyChar();
                 if(!Character.isDigit(caracter)){
@@ -36,8 +54,14 @@ public class Utilidades {
         });
     }
     
+    /**
+     *
+     * @param campo
+     * @param cantidad
+     */
     public static void limitarNumeros(final JTextField campo, final int cantidad){
         campo.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyTyped(KeyEvent key){
                 int largo = campo.getText().length();
                 if(largo >= cantidad){

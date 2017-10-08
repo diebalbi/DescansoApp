@@ -36,12 +36,12 @@ public class ViajeTest {
     public void testSetFechaI() throws Exception {
         System.out.println("Set Fecha Inicial(setea una fecha la viaje)");
         Calendar fechaI = Calendar.getInstance();
-        fechaI.roll(Calendar.DAY_OF_MONTH, true);
+        fechaI.roll(Calendar.MONTH, true);
         Viaje instance = new Viaje();
         instance.setFechaI(fechaI);
 
         Calendar expResult = Calendar.getInstance();
-        expResult.roll(Calendar.DAY_OF_MONTH, true);
+        expResult.roll(Calendar.MONTH, true);
         Calendar result = instance.getFechaI();
         assertEquals(expResult, result);
     }

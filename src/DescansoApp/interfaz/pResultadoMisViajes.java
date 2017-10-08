@@ -4,15 +4,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import java.awt.Cursor;
 
-public class pResultadoMisViajes extends javax.swing.JPanel {
+public class PResultadoMisViajes extends javax.swing.JPanel {
 
     private Sistema modelo;
     private Viaje viaje;
     private JFrame miVentana;
     private JPanel miPanel;
     
-    public pResultadoMisViajes(Sistema unModelo, Viaje unViaje, JFrame unContenedorPrincipal, JPanel miContenedor) {
+    public PResultadoMisViajes(Sistema unModelo, Viaje unViaje, JFrame unContenedorPrincipal, JPanel miContenedor) {
         initComponents();
         modelo = unModelo;
         viaje = unViaje;
@@ -36,7 +37,12 @@ public class pResultadoMisViajes extends javax.swing.JPanel {
         lblNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(0, 51, 204));
         lblNombre.setText("Nombre Viaje");
-        lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblNombre.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblNombreMouseMoved(evt);
+            }
+        });
         lblNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNombreMouseClicked(evt);
@@ -47,7 +53,12 @@ public class pResultadoMisViajes extends javax.swing.JPanel {
         lblFecha.setText("Fecha");
 
         lblEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Editar.png"))); // NOI18N
-        lblEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblEditar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblEditarMouseMoved(evt);
+            }
+        });
         lblEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblEditarMouseClicked(evt);
@@ -79,15 +90,25 @@ public class pResultadoMisViajes extends javax.swing.JPanel {
 
     private void lblEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseClicked
         miVentana.remove(miPanel);
-        miVentana.add(new pnlNuevoViaje(modelo, miVentana, viaje));
+        miVentana.add(new PnlNuevoViaje(modelo, miVentana, viaje));
         miVentana.pack();
     }//GEN-LAST:event_lblEditarMouseClicked
 
     private void lblNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseClicked
         miVentana.remove(miPanel);
-        miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
+        miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblNombreMouseClicked
+
+    private void lblNombreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblNombre.setCursor(cursor);
+    }//GEN-LAST:event_lblNombreMouseMoved
+
+    private void lblEditarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseMoved
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblEditar.setCursor(cursor);
+    }//GEN-LAST:event_lblEditarMouseMoved
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblEditar;

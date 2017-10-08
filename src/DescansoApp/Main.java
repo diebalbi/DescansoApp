@@ -10,33 +10,50 @@ import java.util.ArrayList;
 import descansoApp.dominio.Ciudad;
 import descansoApp.dominio.Sistema;
 import descansoApp.interfaz.Principal;
-import descansoApp.interfaz.pnlInicio;
+import descansoApp.interfaz.PnlInicio;
 
+/**
+ *
+ * @author Fido
+ */
 public class Main {
 
-    protected static Sistema modelo;
+    /**
+     *
+     */
+    public static Sistema modelo;
 
+    /**
+     *
+     * @param args
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         modelo = cargarModelo();
       
         Principal p = new Principal(modelo);
-        p.add(new pnlInicio(modelo, p));
+        p.add(new PnlInicio(modelo, p));
         p.pack();
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }
 
     //Método para cargar el sistema
+    /**
+     *
+     * @return
+     * @throws IOException
+     */
     public static Sistema cargarModelo() throws IOException {
         Sistema unModelo;
 
         try {
             //Intento recuperar los datos guardados
             FileInputStream archivo = new FileInputStream("Sistema");
-            ObjectInputStream leer = new ObjectInputStream(archivo);
-
-            unModelo = (Sistema) leer.readObject();
-            leer.close();
+            try (ObjectInputStream leer = new ObjectInputStream(archivo)) {
+                unModelo = (Sistema) leer.readObject();
+            }
         } catch (FileNotFoundException | ClassNotFoundException e) {
             //Si no puedo abrir el archivo, creo un modelo nuevo
             unModelo = new Sistema();
@@ -52,9 +69,8 @@ public class Main {
     //Metodo encargado de guardar los datos de esta sesión para poder recuperarlos luego
     public static void guardarModelo(Sistema unModelo) throws IOException {
         FileOutputStream archivo = new FileOutputStream("Sistema");
-        ObjectOutputStream grab = new ObjectOutputStream(archivo);
-
-        grab.writeObject(unModelo);
-        grab.close();
+        try (ObjectOutputStream grab = new ObjectOutputStream(archivo)) {
+            grab.writeObject(unModelo);
+        }
     }
 }

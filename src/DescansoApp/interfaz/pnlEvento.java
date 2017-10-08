@@ -8,21 +8,23 @@ import descansoApp.dominio.*;
 import descansoApp.herramientas.Utilidades;
 import java.awt.Cursor;
 
-public class pnlEvento extends javax.swing.JPanel {
+public class PnlEvento extends javax.swing.JPanel {
 
     private Viaje viaje;
     private Evento modEvento;
     private Ciudad ciudad;
     private JFrame miVentana;
     private Sistema modelo;
+    private boolean esNuevo;
 
-    public pnlEvento(Sistema unModelo, Viaje unViaje, descansoApp.dominio.Ciudad unaCiudad, Evento unEvento, JFrame unContenedor, boolean esNuevo) {
+    public PnlEvento(Sistema unModelo, Viaje unViaje, descansoApp.dominio.Ciudad unaCiudad, Evento unEvento, JFrame unContenedor, boolean esNuevo) {
         initComponents();
-        modelo = unModelo;
-        viaje = unViaje;
-        modEvento = unEvento;
-        ciudad = unaCiudad;
-        miVentana = unContenedor;
+        this.modelo = unModelo;
+        this.viaje = unViaje;
+        this.modEvento = unEvento;
+        this.ciudad = unaCiudad;
+        this.miVentana = unContenedor;
+        this.esNuevo = esNuevo;
         restringirCampos();
         cargarEvento();
                 
@@ -249,12 +251,12 @@ public class pnlEvento extends javax.swing.JPanel {
                         evento.setFechaHoraI(cFechaI);
                         evento.setFechaHoraF(cFechaI, cFechaF);
 
-                        if (modEvento == null) {
+                        if (esNuevo) {
                             viaje.agregarEvento(evento);
                             miVentana.dispose();
                         } else {
                             miVentana.remove(this);
-                            miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
+                            miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
                             miVentana.pack();
                         }
 
@@ -269,6 +271,9 @@ public class pnlEvento extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "La hora debe ser un numero entre 0 y 24.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+        else{
+            JOptionPane.showMessageDialog(this, "Debe llenar toda la información solicitada.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_lblGuardarMouseClicked
   
     private void lblEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseClicked
@@ -276,7 +281,7 @@ public class pnlEvento extends javax.swing.JPanel {
         if (respuesta == JOptionPane.OK_OPTION) {
             viaje.eliminarEvento(modEvento);
             miVentana.remove(this);
-            miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
+            miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
             miVentana.pack();
         }
     }//GEN-LAST:event_lblEliminar1MouseClicked
@@ -288,7 +293,7 @@ public class pnlEvento extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         miVentana.remove(this);
-        miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
+        miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 

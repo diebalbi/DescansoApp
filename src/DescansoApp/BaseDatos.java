@@ -2,8 +2,16 @@ package descansoApp;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Fido
+ */
 public class BaseDatos {
 
+    /**
+     *
+     * @return
+     */
     public static ArrayList<String> ciudades() {
         ArrayList<String> ret = new ArrayList<>();
         String texto;
@@ -42,6 +50,10 @@ public class BaseDatos {
         return ret;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String comerciosActividades() {
         String texto;
         texto = "#nombre\n"

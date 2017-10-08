@@ -20,7 +20,7 @@ public class SistemaTest {
         ArrayList<Viaje> expResult= new ArrayList();
         expResult.add(viaje);
         ArrayList<Viaje> result = instance.getListaViajes();
-        assertTrue(true);   
+        assertEquals(expResult, result);   
     }
 
     @Test
@@ -33,7 +33,7 @@ public class SistemaTest {
         ArrayList<Ciudad> expResult = new ArrayList();
         expResult.add(ciudad);
         ArrayList<Ciudad> result = instance.getListaCiudades();
-        assertTrue(true); 
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -47,7 +47,7 @@ public class SistemaTest {
         ArrayList<Viaje> expResult= new ArrayList();
         expResult.add(viaje);
         ArrayList<Viaje> result = instance.getListaViajes();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -58,18 +58,21 @@ public class SistemaTest {
         Viaje viaje2 = new Viaje();
         viaje2.setNombre("Viaje");
         Sistema instance = new Sistema();
-        Exception error= null;
+        Exception error = null;
+        String result = "";
         instance.agregarViaje(viaje);
         
         try {
             instance.agregarViaje(viaje2);
         } catch (Exception e) {
-            error=e;
+            error = e;
         }
         
         String expResult="El nombre del viaje ya existe. Por favor ingrese uno nuevo.";
-        String result = error.getMessage();
-        assertTrue(true);
+        if(error != null){
+            result = error.getMessage();
+        }
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -82,7 +85,7 @@ public class SistemaTest {
         
         boolean expResult = true;
         boolean result = instance.eliminarViaje(unViaje);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     
@@ -95,7 +98,7 @@ public class SistemaTest {
 
         boolean expResult = false;
         boolean result = instance.eliminarViaje(unViaje);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -107,7 +110,7 @@ public class SistemaTest {
         
         boolean expResult = false;
         boolean result = instance.pertenece(viaje);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -120,7 +123,7 @@ public class SistemaTest {
         
         boolean expResult = true;
         boolean result = instance.pertenece(unViaje);
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 
     
@@ -136,6 +139,6 @@ public class SistemaTest {
         ArrayList<Ciudad> expResult= new ArrayList();
         expResult.add(ciudad);
         ArrayList<Ciudad> result = instance.getListaCiudades();
-        assertTrue(true);
+        assertEquals(expResult, result);
     }
 }

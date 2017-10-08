@@ -5,14 +5,14 @@ import descansoApp.dominio.Evento;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 
-public class pnlInformacionEvento extends javax.swing.JPanel {
+public class PnlInformacionEvento extends javax.swing.JPanel {
 
     private Evento evento;
     private JFrame miVentana;
     private Viaje viaje;
     private Sistema modelo;
     
-    public pnlInformacionEvento(Sistema unModelo, Viaje unViaje, Evento unEvento, JFrame unContenedor) {
+    public PnlInformacionEvento(Sistema unModelo, Viaje unViaje, Evento unEvento, JFrame unContenedor) {
       
         initComponents();
         modelo = unModelo;
@@ -172,7 +172,7 @@ public class pnlInformacionEvento extends javax.swing.JPanel {
         add(txtHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 135, 130, 20));
 
         lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
-        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVolverMouseClicked(evt);
@@ -186,7 +186,7 @@ public class pnlInformacionEvento extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         miVentana.remove(this);
-        miVentana.add(new pnlItinerario(modelo, viaje, miVentana));
+        miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 

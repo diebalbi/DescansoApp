@@ -7,12 +7,12 @@ import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 import javax.swing.JOptionPane;
 
-public class pnlMisViajes extends javax.swing.JPanel {
+public class PnlMisViajes extends javax.swing.JPanel {
 
     private Sistema modelo;
     private JFrame miVentana;
 
-    public pnlMisViajes(Sistema unModelo, JFrame unContenedor) {
+    public PnlMisViajes(Sistema unModelo, JFrame unContenedor) {
         initComponents();
         pnlResultados.setOpaque(false);
         pnlResultados.setLayout(new BoxLayout(pnlResultados, BoxLayout.PAGE_AXIS));
@@ -68,7 +68,7 @@ public class pnlMisViajes extends javax.swing.JPanel {
         int cantResultados = resultados.size();
         if (cantResultados > 0) {
             for (int i = 0; i < cantResultados; i++) {
-                pResultadoMisViajes p = new pResultadoMisViajes(modelo, resultados.get(i), miVentana, this);
+                PResultadoMisViajes p = new PResultadoMisViajes(modelo, resultados.get(i), miVentana, this);
                 pnlResultados.add(p);
             }
             pnlResultados.setVisible(true);

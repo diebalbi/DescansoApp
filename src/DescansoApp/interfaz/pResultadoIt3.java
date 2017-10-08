@@ -7,7 +7,7 @@ import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 import java.awt.Cursor;
 
-public class pResultadoIt3 extends javax.swing.JPanel {
+public class PResultadoIt3 extends javax.swing.JPanel {
 
     private Evento evento;
     private Viaje viaje;
@@ -15,7 +15,7 @@ public class pResultadoIt3 extends javax.swing.JPanel {
     private JPanel miPanel;
     private Sistema modelo;
 
-    public pResultadoIt3(Sistema unModelo,Viaje unViaje, Evento unEvento, JFrame miContenedorPrincipal, JPanel miContenedor) {
+    public PResultadoIt3(Sistema unModelo,Viaje unViaje, Evento unEvento, JFrame miContenedorPrincipal, JPanel miContenedor) {
         initComponents();
         modelo= unModelo;
         evento = unEvento;
@@ -104,13 +104,13 @@ public class pResultadoIt3 extends javax.swing.JPanel {
 
     private void lblEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditarMouseClicked
         miVentana.remove(miPanel);
-        miVentana.add(new pnlEvento(modelo, viaje, evento.getCiudad(), evento, miVentana, false));
+        miVentana.add(new PnlEvento(modelo, viaje, evento.getCiudad(), evento, miVentana, false));
         miVentana.pack();
     }//GEN-LAST:event_lblEditarMouseClicked
 
     private void lblNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseClicked
         miVentana.remove(miPanel);
-        miVentana.add(new pnlInformacionEvento(modelo, viaje, evento, miVentana));
+        miVentana.add(new PnlInformacionEvento(modelo, viaje, evento, miVentana));
         miVentana.pack();        
     }//GEN-LAST:event_lblNombreMouseClicked
 

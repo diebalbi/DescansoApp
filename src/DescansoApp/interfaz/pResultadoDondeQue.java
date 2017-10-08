@@ -8,7 +8,7 @@ import descansoApp.dominio.Sistema;
 import java.awt.Color;
 import java.awt.Cursor;
 
-public class pResultadoDondeQue extends javax.swing.JPanel {
+public class PResultadoDondeQue extends javax.swing.JPanel {
 
     private Sistema modelo;
     private ComercioActividad cA;
@@ -16,7 +16,7 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
     private JFrame ventana;
     private descansoApp.dominio.Ciudad ciudad;
    
-    public pResultadoDondeQue(Sistema unModelo, ComercioActividad unCA,  JFrame unaVentana, JPanel unPadre, descansoApp.dominio.Ciudad unaCiudad) {
+    public PResultadoDondeQue(Sistema unModelo, ComercioActividad unCA,  JFrame unaVentana, JPanel unPadre, descansoApp.dominio.Ciudad unaCiudad) {
         initComponents();
         txtDes.setOpaque(false);
         txtDes.setLayout(new BoxLayout(txtDes, BoxLayout.PAGE_AXIS));
@@ -100,7 +100,7 @@ public class pResultadoDondeQue extends javax.swing.JPanel {
 
     private void lblInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInformacionMouseClicked
         ventana.remove(padre);
-        ventana.add(new pnlInformacionComercioActividad(modelo, cA, ventana,ciudad));
+        ventana.add(new PnlInformacionComercioActividad(modelo, cA, ventana,ciudad));
         ventana.pack();
     }//GEN-LAST:event_lblInformacionMouseClicked
 

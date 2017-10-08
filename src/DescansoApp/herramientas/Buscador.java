@@ -3,14 +3,30 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import descansoApp.dominio.Ciudad;
 
+/**
+ *
+ * @author Fido
+ */
 public class Buscador {
 
+    /**
+     *
+     */
     public ArrayList<Ciudad> ciudades;
 
+    /**
+     *
+     * @param lista
+     */
     public Buscador(ArrayList<Ciudad> lista) {
         ciudades = lista;
     }
 
+    /**
+     *
+     * @param palabra
+     * @return
+     */
     public ArrayList<Ciudad> buscar(String palabra) {
         palabra = palabra.toLowerCase();
         palabra = palabra.trim();

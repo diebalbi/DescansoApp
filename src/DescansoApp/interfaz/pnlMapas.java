@@ -4,12 +4,12 @@ import javax.swing.JFrame;
 import descansoApp.dominio.Sistema;
 import java.awt.Cursor;
 
-public class pnlMapas extends javax.swing.JPanel {
+public class PnlMapas extends javax.swing.JPanel {
     private Sistema modelo;
     private descansoApp.dominio.Ciudad ciudad;
     private JFrame padre;
     
-    public pnlMapas(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unPadre)  {
+    public PnlMapas(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unPadre)  {
         initComponents();
         modelo = unModelo;
         ciudad = unaCiudad;
@@ -68,13 +68,13 @@ public class pnlMapas extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         padre.remove(this);
-        padre.add(new pnlInformacionCiudad(modelo, ciudad, padre));
+        padre.add(new PnlInformacionCiudad(modelo, ciudad, padre));
         padre.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo, padre));
+        padre.add(new PnlInicio(modelo, padre));
         padre.pack();
     }//GEN-LAST:event_lblHomeMouseClicked
 

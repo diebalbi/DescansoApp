@@ -34,7 +34,11 @@ public class Principal extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         try {
             Main.guardarModelo(modelo);
-        } catch (IOException e) { }
+        } 
+        catch (IOException e) {
+        }
+        catch (Exception e){   
+        }
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

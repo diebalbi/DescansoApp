@@ -7,12 +7,12 @@ import descansoApp.dominio.Sistema;
 import descansoApp.herramientas.Buscador;
 import java.awt.Cursor;
 
-public class pnlResultadoBusqueda extends javax.swing.JPanel {
+public class PnlResultadoBusqueda extends javax.swing.JPanel {
 
     private Sistema modelo;
     private JFrame padre;
 
-    public pnlResultadoBusqueda(Sistema unModelo, JFrame unPadre, String palabra) {
+    public PnlResultadoBusqueda(Sistema unModelo, JFrame unPadre, String palabra) {
         initComponents();
         pnlResultados.setOpaque(false);
         scroll.setOpaque(false);
@@ -144,7 +144,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo, padre));
+        padre.add(new PnlInicio(modelo, padre));
         padre.pack();
     }//GEN-LAST:event_lblHomeMouseClicked
 
@@ -160,7 +160,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo,padre));
+        padre.add(new PnlInicio(modelo,padre));
         padre.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 
@@ -180,7 +180,7 @@ public class pnlResultadoBusqueda extends javax.swing.JPanel {
             scroll.setVisible(true);
             lblNoHay.setVisible(false);
             for (int i = 0; i < cantResultados; i++) {
-                pResultado pr = new pResultado(modelo, resultados.get(i), padre, this);
+                PResultado pr = new PResultado(modelo, resultados.get(i), padre, this);
                 pnlResultados.setLayout(new java.awt.BorderLayout());
                 pnlResultados.add(pr);
                 pr.setVisible(true);

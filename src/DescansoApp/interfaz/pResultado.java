@@ -6,14 +6,14 @@ import descansoApp.dominio.Sistema;
 import java.awt.Color;
 import java.awt.Cursor;
 
-public class pResultado extends javax.swing.JPanel {
+public class PResultado extends javax.swing.JPanel {
 
     private JFrame ventana;
     private JPanel padre;
     private Sistema modelo;
     private descansoApp.dominio.Ciudad ciudad;
     
-    public pResultado(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unaVentana, JPanel unPadre) {
+    public PResultado(Sistema unModelo, descansoApp.dominio.Ciudad unaCiudad, JFrame unaVentana, JPanel unPadre) {
         initComponents();
         modelo = unModelo;
         ciudad = unaCiudad;
@@ -101,7 +101,7 @@ public class pResultado extends javax.swing.JPanel {
 
     private void lblInformacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInformacionMouseClicked
         ventana.remove(padre);
-        ventana.add(new pnlInformacionCiudad(modelo, ciudad, ventana));
+        ventana.add(new PnlInformacionCiudad(modelo, ciudad, ventana));
         ventana.pack();
     }//GEN-LAST:event_lblInformacionMouseClicked
 

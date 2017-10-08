@@ -1,8 +1,8 @@
 package descansoApp.interfaz;
 
-public class pResultadoIt2 extends javax.swing.JPanel {
+public class PResultadoIt2 extends javax.swing.JPanel {
 
-    public pResultadoIt2(String unaFecha) {
+    public PResultadoIt2(String unaFecha) {
         initComponents();
         lblFecha.setText(unaFecha);
     }

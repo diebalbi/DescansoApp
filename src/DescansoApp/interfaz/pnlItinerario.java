@@ -10,13 +10,13 @@ import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 
 
-public class pnlItinerario extends javax.swing.JPanel {
+public class PnlItinerario extends javax.swing.JPanel {
 
     private Sistema modelo;
     private Viaje viaje;
     private JFrame miVentana;
 
-    public pnlItinerario(Sistema unModelo, Viaje unViaje, JFrame unContenedor) {
+    public PnlItinerario(Sistema unModelo, Viaje unViaje, JFrame unContenedor) {
         initComponents();
         pnlResultados.setOpaque(false);
         pnlResultados.setLayout(new BoxLayout(pnlResultados, BoxLayout.PAGE_AXIS));
@@ -47,7 +47,7 @@ public class pnlItinerario extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnVolver.png"))); // NOI18N
-        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblVolverMouseClicked(evt);
@@ -88,7 +88,7 @@ public class pnlItinerario extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         miVentana.remove(this);
-        miVentana.add(new pnlMisViajes(modelo, miVentana));
+        miVentana.add(new PnlMisViajes(modelo, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 
@@ -111,17 +111,17 @@ public class pnlItinerario extends javax.swing.JPanel {
 
                 if (actual.getCiudad() != ciudad) {
                     ciudad = actual.getCiudad();
-                    pResultadoIt1 p = new pResultadoIt1(ciudad.getNombre());
+                    PResultadoIt1 p = new PResultadoIt1(ciudad.getNombre());
                     pnlResultados.add(p);
                 }
 
                 if (!fechasIguales(actual.getFechaHoraI(), fecha)) {
                     fecha = actual.getFechaHoraI();
-                    pResultadoIt2 p2 = new pResultadoIt2(actual.fechaInicioToString());
+                    PResultadoIt2 p2 = new PResultadoIt2(actual.fechaInicioToString());
                     pnlResultados.add(p2);
                 }
 
-                pResultadoIt3 p3 = new pResultadoIt3(modelo, viaje, actual, miVentana, this);
+                PResultadoIt3 p3 = new PResultadoIt3(modelo, viaje, actual, miVentana, this);
                 pnlResultados.add(p3);
 
                 pnlResultados.setVisible(true);
@@ -136,6 +136,7 @@ public class pnlItinerario extends javax.swing.JPanel {
      public boolean fechasIguales(Calendar f1, Calendar f2){
         if (f1 == null && f2 != null) return false;
         if (f1 != null && f2 == null) return false;
+        if (f1 == null && f2 == null) return true;
         
         if (f1.get(Calendar.DAY_OF_MONTH) == f2.get(Calendar.DAY_OF_MONTH))
             if (f1.get(Calendar.MONTH) == f2.get(Calendar.MONTH))

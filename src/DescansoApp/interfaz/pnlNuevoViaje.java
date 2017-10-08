@@ -8,13 +8,13 @@ import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 import java.awt.Cursor;
 
-public class pnlNuevoViaje extends javax.swing.JPanel {
+public class PnlNuevoViaje extends javax.swing.JPanel {
 
     private Sistema modelo;
     private JFrame miVentana;
     private Viaje modViaje;
 
-    public pnlNuevoViaje(Sistema unModelo, JFrame unContenedor, Viaje modificarViaje) {
+    public PnlNuevoViaje(Sistema unModelo, JFrame unContenedor, Viaje modificarViaje) {
         initComponents();
         modelo = unModelo;
         miVentana = unContenedor;
@@ -163,6 +163,8 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
 
     private void lblBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseEntered
         lblBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/btnGuardarONN.png")));
+        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        lblBoton.setCursor(cursor);
     }//GEN-LAST:event_lblBotonMouseEntered
 
     private void lblBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBotonMouseExited
@@ -171,7 +173,7 @@ public class pnlNuevoViaje extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         miVentana.remove(this);
-        miVentana.add(new pnlMisViajes(modelo, miVentana));
+        miVentana.add(new PnlMisViajes(modelo, miVentana));
         miVentana.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 

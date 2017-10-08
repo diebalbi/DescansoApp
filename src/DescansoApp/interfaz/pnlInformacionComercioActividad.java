@@ -17,7 +17,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.net.URL;
 
-public class pnlInformacionComercioActividad extends javax.swing.JPanel {
+public class PnlInformacionComercioActividad extends javax.swing.JPanel {
 
     private Sistema modelo;
     private ComercioActividad cA;
@@ -26,7 +26,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
     private int contador = 0;
     private Ciudad ciudad;
 
-    public pnlInformacionComercioActividad(Sistema unModelo, ComercioActividad unCA, JFrame unPadre, descansoApp.dominio.Ciudad unaCiudad) {
+    public PnlInformacionComercioActividad(Sistema unModelo, ComercioActividad unCA, JFrame unPadre, descansoApp.dominio.Ciudad unaCiudad) {
         initComponents();
         modelo = unModelo;
         cA = unCA;
@@ -310,7 +310,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
 
     private void lblVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVolverMouseClicked
         padre.remove(this);
-        padre.add(new pnlDondeQue(modelo,ciudad , padre, cA.getTipo()));
+        padre.add(new PnlDondeQue(modelo,ciudad , padre, cA.getTipo()));
         padre.pack();
     }//GEN-LAST:event_lblVolverMouseClicked
 
@@ -337,7 +337,7 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         evento.setNombre(lblNombreEst.getText());
         evento.setUbicacion(lblUbicacionActividad.getText());
         PopUp p = new PopUp();
-        p.add(new pnlEvento(modelo, (Viaje) comboViajes.getSelectedItem(), ciudad, evento, p, true));
+        p.add(new PnlEvento(modelo, (Viaje) comboViajes.getSelectedItem(), ciudad, evento, p, true));
         p.pack();
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -361,13 +361,13 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
                 }
             }
         } catch (URISyntaxException ex) {
-            Logger.getLogger(pnlInformacionComercioActividad.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PnlInformacionComercioActividad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_lblpaginaMouseClicked
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         padre.remove(this);
-        padre.add(new pnlInicio(modelo, padre));
+        padre.add(new PnlInicio(modelo, padre));
         padre.pack();
     }//GEN-LAST:event_lblHomeMouseClicked
 

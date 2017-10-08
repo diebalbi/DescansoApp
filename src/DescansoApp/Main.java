@@ -14,7 +14,7 @@ import descansoApp.interfaz.pnlInicio;
 
 public class Main {
 
-    public static Sistema modelo;
+    protected static Sistema modelo;
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         modelo = cargarModelo();

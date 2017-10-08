@@ -41,6 +41,8 @@ public class Informacion {
                             case 3:
                                 listaImg.add(linea);
                                 break;
+                            default:
+                                break;
                         }
                     }
                 } else {
@@ -75,6 +77,8 @@ public class Informacion {
                 break;
             case "#rutas":
                 parte = 3;
+                break;
+            default:
                 break;
         }
         return parte;
@@ -115,6 +119,8 @@ public class Informacion {
                     break;
                 case "estGastronomico":
                     cA.setTipo(TipoCA.estGastronomico);
+                    break;
+                default:
                     break;
             }
             cA.setCategoria(datos[3]);
@@ -163,6 +169,9 @@ public class Informacion {
                 break;
             case "#rutas":
                 parte = 9;
+                break;
+            default:
+                parte = -2;
                 break;
         }
         return parte;

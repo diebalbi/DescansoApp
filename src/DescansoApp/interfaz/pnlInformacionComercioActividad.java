@@ -15,6 +15,7 @@ import descansoApp.dominio.Ciudad;
 import descansoApp.dominio.Evento;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.net.URL;
 
 public class pnlInformacionComercioActividad extends javax.swing.JPanel {
 
@@ -31,15 +32,8 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
         cA = unCA;
         padre = unPadre;
         ciudad = unaCiudad;
-        if(cA.getImagenes().isEmpty()){
-            //lblGaleria.setIcon(); Cargar una imagen por defecto
-            lblSiguiente.setVisible(false);
-            lblAnterior.setVisible(false);
-        }
-        else {
-            listaImagenes = cA.getImagenes();
-            lblGaleria.setIcon(listaImagenes.get(0));
-        }
+
+        cargarImagenes();
         if (!modelo.getListaViajes().isEmpty()) {
             Iterator<Viaje> itViaje = modelo.getListaViajes().iterator();
             while (itViaje.hasNext()) {
@@ -51,6 +45,32 @@ public class pnlInformacionComercioActividad extends javax.swing.JPanel {
             lblBoton.setVisible(false);
         }
         cargar();
+    }
+    
+    private void cargarImagenes(){
+        if(cA.getImagenes().isEmpty()){
+            ocultarBotones();
+            cargarNoHayImagen();
+        }
+        else if(cA.getImagenes().size() == 1){
+            ocultarBotones();
+        }
+        else{
+            listaImagenes = cA.getImagenes();
+            lblGaleria.setIcon(listaImagenes.get(0));
+        }
+    }
+    
+    private void ocultarBotones(){
+            lblSiguiente.setVisible(false);
+            lblAnterior.setVisible(false);
+    }
+    
+    private void cargarNoHayImagen(){
+        String path = "/descansoApp/imagenes/noDisponible.jpg";  
+        URL url = this.getClass().getResource(path);  
+        ImageIcon icon = new ImageIcon(url);  
+        lblGaleria.setIcon(icon);
     }
 
     @SuppressWarnings("unchecked")

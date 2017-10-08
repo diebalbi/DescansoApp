@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
 
 public class Evento implements Serializable, Comparable<Evento> {
@@ -140,7 +141,7 @@ public class Evento implements Serializable, Comparable<Evento> {
     public boolean equals(Object obj) {
         boolean valido = false;
         Evento ev = (Evento) obj;
-        if (ev.getNombre().equalsIgnoreCase(this.getNombre())) {
+        if (ev.getNombre().equalsIgnoreCase(this.getNombre()) && ev.fechaInicioToString().equals(this.fechaInicioToString())) {
             valido = true;
         }
         return valido;

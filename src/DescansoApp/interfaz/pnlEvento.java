@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import descansoApp.dominio.*;
 import descansoApp.herramientas.Utilidades;
-import descansoApp.herramientas.ValidarNumero;
 import java.awt.Cursor;
 
 public class pnlEvento extends javax.swing.JPanel {
@@ -27,7 +26,7 @@ public class pnlEvento extends javax.swing.JPanel {
         restringirCampos();
         cargarEvento();
                 
-        if (modEvento == null) {
+        if (esNuevo) {
             lblEliminar1.setVisible(false);
         } else {
             lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/ModificarEvento.png")));
@@ -231,18 +230,13 @@ public class pnlEvento extends javax.swing.JPanel {
             evento.setDescripcion(txtDescripcion.getText());
             evento.setCiudad(ciudad);
 
-            if (!ValidarNumero.esNumero(txtHoraIHoras.getText()) || !ValidarNumero.esNumero(txtHoraIMinutos.getText())
-                    || !ValidarNumero.esNumero(txtHoraFHoras.getText()) || !ValidarNumero.esNumero(txtHoraFMinutos.getText())) {
-                JOptionPane.showMessageDialog(this, "Formato incorrecto de la hora ingresada.", "Error", JOptionPane.ERROR_MESSAGE);
+            int hIHoras = Integer.parseInt(txtHoraIHoras.getText());
+            int hIMinutos = Integer.parseInt(txtHoraIMinutos.getText());
+            int hFHoras = Integer.parseInt(txtHoraFHoras.getText());
+            int hFMinutos = Integer.parseInt(txtHoraFMinutos.getText());
 
-            } else {
-                int hIHoras = Integer.parseInt(txtHoraIHoras.getText());
-                int hIMinutos = Integer.parseInt(txtHoraIMinutos.getText());
-                int hFHoras = Integer.parseInt(txtHoraFHoras.getText());
-                int hFMinutos = Integer.parseInt(txtHoraFMinutos.getText());
-
-                if ((hIHoras >= 0 && hIHoras <= 23) && (hIMinutos >= 0 && hIMinutos <= 59) && (hFHoras >= 0 && hFHoras <= 23) && (hFMinutos >= 0 && hFMinutos <= 59)) {
-
+            if ((hIHoras >= 0 && hIHoras <= 23) && (hFHoras >= 0 && hFHoras <= 23)) {
+                if((hIMinutos >= 0 && hIMinutos <= 59) && (hFMinutos >= 0 && hFMinutos <= 59)){
                     Calendar cFechaI = dChosserFechaI.getCalendar();
                     Calendar cFechaF = dChosserFechaF.getCalendar();
 
@@ -267,12 +261,13 @@ public class pnlEvento extends javax.swing.JPanel {
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Formato incorrecto de la hora ingresada", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                else{
+                    JOptionPane.showMessageDialog(this, "Los minutos deben ser un numero entre 0 y 59.", "Error", JOptionPane.ERROR_MESSAGE);      
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "La hora debe ser un numero entre 0 y 24.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(miVentana, viaje, TOOL_TIP_TEXT_KEY, WIDTH);
         }
     }//GEN-LAST:event_lblGuardarMouseClicked
   

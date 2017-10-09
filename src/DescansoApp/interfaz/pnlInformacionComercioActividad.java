@@ -68,7 +68,7 @@ public class PnlInformacionComercioActividad extends javax.swing.JPanel {
     
     private void cargarNoHayImagen(){
         String path = "/descansoApp/imagenes/noDisponible.jpg";  
-        URL url = this.getClass().getResource(path);  
+        URL url = this.getClass().getResource(path);
         ImageIcon icon = new ImageIcon(url);  
         lblGaleria.setIcon(icon);
     }

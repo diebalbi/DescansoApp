@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
 import java.awt.Cursor;
+import javax.swing.JOptionPane;
 
 public class PResultadoMisViajes extends javax.swing.JPanel {
 
@@ -95,9 +96,13 @@ public class PResultadoMisViajes extends javax.swing.JPanel {
     }//GEN-LAST:event_lblEditarMouseClicked
 
     private void lblNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseClicked
-        miVentana.remove(miPanel);
-        miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
-        miVentana.pack();
+        if(viaje.getItinerario().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay eventos creados para el viaje.");
+        } else {
+            miVentana.remove(miPanel);
+            miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
+            miVentana.pack();
+        }
     }//GEN-LAST:event_lblNombreMouseClicked
 
     private void lblNombreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNombreMouseMoved

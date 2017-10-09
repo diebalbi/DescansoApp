@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import descansoApp.dominio.*;
 import descansoApp.herramientas.Utilidades;
 import java.awt.Cursor;
+import java.text.SimpleDateFormat;
 
 public class PnlEvento extends javax.swing.JPanel {
 
@@ -219,56 +220,66 @@ public class PnlEvento extends javax.swing.JPanel {
         if (txtNombre.getText().length() > 0 && txtUbicacion.getText().length() > 0 && txtDescripcion.getText().length() > 0
                 && txtHoraIHoras.getText().length() > 0 && txtHoraIMinutos.getText().length() > 0 && txtHoraFHoras.getText().length() > 0
                 && txtHoraFMinutos.getText().length() > 0 && dChosserFechaI != null && dChosserFechaF != null) {
-
-            Evento evento;
-            if (modEvento == null) {
-                evento = new Evento();
-            } else {
-                evento = modEvento;
+            Calendar cFechaI = dChosserFechaI.getCalendar();
+            Calendar cFechaF = dChosserFechaF.getCalendar();
+            if(cFechaI.compareTo(viaje.getFechaI()) < 0){
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaInicioViaje = formatter.format(viaje.getFechaI().getTime());
+                JOptionPane.showMessageDialog(this, "La fecha de inicio del evento no puede ser menor a la fecha de inicio del viaje("+fechaInicioViaje+").", "Error", JOptionPane.ERROR_MESSAGE);      
+            } 
+            else if(cFechaI.compareTo(viaje.getFechaF()) > 0){
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaFinViaje = formatter.format(viaje.getFechaF().getTime());
+                JOptionPane.showMessageDialog(this, "La fecha de inicio del evento no puede ser mayor a la fecha fin del viaje("+fechaFinViaje+").", "Error", JOptionPane.ERROR_MESSAGE);      
             }
+            else if(cFechaF.compareTo(viaje.getFechaF()) > 0){
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaFinViaje = formatter.format(viaje.getFechaF().getTime());
+                JOptionPane.showMessageDialog(this, "La fecha de fin del evento no puede ser mayor a la fecha fin del viaje("+fechaFinViaje+").", "Error", JOptionPane.ERROR_MESSAGE);      
+            }
+            else {
+                Evento evento = modEvento;
 
-            evento.setNombre(txtNombre.getText());
-            evento.setUbicacion(txtUbicacion.getText());
-            evento.setDescripcion(txtDescripcion.getText());
-            evento.setCiudad(ciudad);
+                evento.setNombre(txtNombre.getText());
+                evento.setUbicacion(txtUbicacion.getText());
+                evento.setDescripcion(txtDescripcion.getText());
+                evento.setCiudad(ciudad);
 
-            int hIHoras = Integer.parseInt(txtHoraIHoras.getText());
-            int hIMinutos = Integer.parseInt(txtHoraIMinutos.getText());
-            int hFHoras = Integer.parseInt(txtHoraFHoras.getText());
-            int hFMinutos = Integer.parseInt(txtHoraFMinutos.getText());
+                int hIHoras = Integer.parseInt(txtHoraIHoras.getText());
+                int hIMinutos = Integer.parseInt(txtHoraIMinutos.getText());
+                int hFHoras = Integer.parseInt(txtHoraFHoras.getText());
+                int hFMinutos = Integer.parseInt(txtHoraFMinutos.getText());
 
-            if ((hIHoras >= 0 && hIHoras <= 23) && (hFHoras >= 0 && hFHoras <= 23)) {
-                if((hIMinutos >= 0 && hIMinutos <= 59) && (hFMinutos >= 0 && hFMinutos <= 59)){
-                    Calendar cFechaI = dChosserFechaI.getCalendar();
-                    Calendar cFechaF = dChosserFechaF.getCalendar();
+                if ((hIHoras >= 0 && hIHoras <= 23) && (hFHoras >= 0 && hFHoras <= 23)) {
+                    if((hIMinutos >= 0 && hIMinutos <= 59) && (hFMinutos >= 0 && hFMinutos <= 59)){
+                        cFechaI.set(Calendar.HOUR_OF_DAY, hIHoras);
+                        cFechaI.set(Calendar.MINUTE, hIMinutos);
+                        cFechaF.set(Calendar.HOUR_OF_DAY, hFHoras);
+                        cFechaF.set(Calendar.MINUTE, hFMinutos);
 
-                    cFechaI.set(Calendar.HOUR_OF_DAY, hIHoras);
-                    cFechaI.set(Calendar.MINUTE, hIMinutos);
-                    cFechaF.set(Calendar.HOUR_OF_DAY, hFHoras);
-                    cFechaF.set(Calendar.MINUTE, hFMinutos);
+                        try {
+                            evento.setFechaHoraI(cFechaI);
+                            evento.setFechaHoraF(cFechaI, cFechaF);
 
-                    try {
-                        evento.setFechaHoraI(cFechaI);
-                        evento.setFechaHoraF(cFechaI, cFechaF);
+                            if (esNuevo) {
+                                viaje.agregarEvento(evento);
+                                miVentana.dispose();
+                            } else {
+                                miVentana.remove(this);
+                                miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
+                                miVentana.pack();
+                            }
 
-                        if (esNuevo) {
-                            viaje.agregarEvento(evento);
-                            miVentana.dispose();
-                        } else {
-                            miVentana.remove(this);
-                            miVentana.add(new PnlItinerario(modelo, viaje, miVentana));
-                            miVentana.pack();
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                         }
-
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     }
+                    else{
+                        JOptionPane.showMessageDialog(this, "Los minutos deben ser un numero entre 0 y 59.", "Error", JOptionPane.ERROR_MESSAGE);      
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "La hora debe ser un numero entre 0 y 24.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-                else{
-                    JOptionPane.showMessageDialog(this, "Los minutos deben ser un numero entre 0 y 59.", "Error", JOptionPane.ERROR_MESSAGE);      
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "La hora debe ser un numero entre 0 y 24.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         else{

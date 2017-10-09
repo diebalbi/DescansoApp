@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import descansoApp.dominio.Evento;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
+import javax.swing.JOptionPane;
 
 
 public class PnlItinerario extends javax.swing.JPanel {
@@ -41,7 +42,6 @@ public class PnlItinerario extends javax.swing.JPanel {
         scroll = new javax.swing.JScrollPane();
         pnlResultados = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
-        lblNoHay = new javax.swing.JLabel();
         lblFondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,11 +77,6 @@ public class PnlItinerario extends javax.swing.JPanel {
         lblNombre.setText("Nombre del Viaje");
         add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 19, 410, 30));
 
-        lblNoHay.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblNoHay.setForeground(new java.awt.Color(255, 255, 255));
-        lblNoHay.setText("No hay eventos guardados!");
-        add(lblNoHay, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
-
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/descansoApp/imagenes/Itinerario.png"))); // NOI18N
         add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -101,7 +96,6 @@ public class PnlItinerario extends javax.swing.JPanel {
 
        
         if (resultados.size() > 0) {
-            lblNoHay.setVisible(false);
             descansoApp.dominio.Ciudad ciudad = null;
             Calendar fecha = null;
 
@@ -129,7 +123,7 @@ public class PnlItinerario extends javax.swing.JPanel {
                 pnlResultados.repaint();
             }
         } else {
-            lblNoHay.setVisible(true);
+            JOptionPane.showMessageDialog(null, "No hay eventos creados para el viaje.");
         }
     }
     
@@ -148,7 +142,6 @@ public class PnlItinerario extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblFondo;
-    private javax.swing.JLabel lblNoHay;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblVolver;
     private javax.swing.JPanel pnlResultados;

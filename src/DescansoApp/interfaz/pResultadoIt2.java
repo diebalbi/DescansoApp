@@ -17,7 +17,7 @@ public class PResultadoIt2 extends javax.swing.JPanel {
         setOpaque(false);
 
         lbl.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lbl.setText("Fecha:");
+        lbl.setText("Fecha de inicio:");
 
         lblFecha.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblFecha.setText("una fecha");
@@ -32,7 +32,7 @@ public class PResultadoIt2 extends javax.swing.JPanel {
                 .addComponent(lbl)
                 .addGap(10, 10, 10)
                 .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

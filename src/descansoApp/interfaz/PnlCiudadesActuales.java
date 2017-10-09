@@ -70,7 +70,7 @@ public class PnlCiudadesActuales extends javax.swing.JPanel {
         int cantResultados = ciudades.size();
         if (cantResultados > 0) {
             for (int i = 0; i < cantResultados; i++) {
-                if (!filtros.contains(ciudades.get(i))) {
+                if (!filtros.contains(ciudades.get(i).getNombre())) {
                     filtros.add(ciudades.get(i).getNombre());
                 }
             }

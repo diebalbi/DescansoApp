@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import descansoApp.dominio.Sistema;
 import static descansoApp.herramientas.TipoCA.*;
 import java.awt.Cursor;
+import javax.swing.JOptionPane;
 
 public class PnlInformacionCiudad extends javax.swing.JPanel {
 
@@ -335,21 +336,33 @@ public class PnlInformacionCiudad extends javax.swing.JPanel {
     }//GEN-LAST:event_lblQueEstaCercaMouseExited
 
     private void lblDondeDormirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDondeDormirMouseClicked
-        padre.remove(this);
-        padre.add(new PnlDondeQue(modelo, ciudad, padre, alojamiento));
-        padre.pack();
+        if(ciudad.getAlojamientos().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay lugares dodne dormir registrados para esta ciudad.");
+        } else {
+            padre.remove(this);
+            padre.add(new PnlDondeQue(modelo, ciudad, padre, alojamiento));
+            padre.pack();
+        }
     }//GEN-LAST:event_lblDondeDormirMouseClicked
 
     private void lblDondeComerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDondeComerMouseClicked
-        padre.remove(this);
-        padre.add(new PnlDondeQue(modelo, ciudad, padre, estGastronomico));
-        padre.pack();
+        if(ciudad.getEstGastronomicos().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay lugares donde comer registrados para esta ciudad.");
+        } else {
+            padre.remove(this);
+            padre.add(new PnlDondeQue(modelo, ciudad, padre, estGastronomico));
+            padre.pack();
+        }
     }//GEN-LAST:event_lblDondeComerMouseClicked
 
     private void lblQueHacerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQueHacerMouseClicked
-        padre.remove(this);
-        padre.add(new PnlDondeQue(modelo, ciudad, padre, actividad));
-        padre.pack();
+        if(ciudad.getActividades().isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay actividades registradas para esta ciudad.");
+        } else {
+            padre.remove(this);
+            padre.add(new PnlDondeQue(modelo, ciudad, padre, actividad));
+            padre.pack();
+        }
     }//GEN-LAST:event_lblQueHacerMouseClicked
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
@@ -359,9 +372,15 @@ public class PnlInformacionCiudad extends javax.swing.JPanel {
     }//GEN-LAST:event_lblHomeMouseClicked
 
     private void lblQueEstaCercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQueEstaCercaMouseClicked
-        padre.remove(this);
-        padre.add(new PnlMapas(modelo, ciudad, padre));
-        padre.pack();
+        if(ciudad.getNombre().equals("Fray Bentos")){
+            padre.remove(this);
+            padre.add(new PnlMapas(modelo, ciudad, padre));
+            padre.pack();
+        } 
+        else{
+            JOptionPane.showMessageDialog(null, "No hay un mapa de la ciudad registrado.");
+        }
+        
     }//GEN-LAST:event_lblQueEstaCercaMouseClicked
 
     private void lblHomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseEntered

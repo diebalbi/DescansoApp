@@ -105,7 +105,7 @@ public class PnlInformacionEvento extends javax.swing.JPanel {
         txtUbicacion.setHighlighter(null);
         scroll3.setViewportView(txtUbicacion);
 
-        add(scroll3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 225, 130, 20));
+        add(scroll3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 225, 130, 40));
 
         scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);

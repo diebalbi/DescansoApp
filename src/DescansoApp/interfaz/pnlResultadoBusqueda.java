@@ -76,7 +76,9 @@ public class PnlResultadoBusqueda extends javax.swing.JPanel {
         });
         add(lblBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 38, 20, 20));
 
+        txtBuscador.setBackground(new java.awt.Color(102, 102, 102));
         txtBuscador.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        txtBuscador.setForeground(new java.awt.Color(255, 255, 255));
         txtBuscador.setBorder(null);
         txtBuscador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,20 +129,8 @@ public class PnlResultadoBusqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscadorActionPerformed
 
     private void lblBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBuscarMouseClicked
-        int cantidadLetrasPermitidas = 30;
-        if (txtBuscador.getText().length() <= 3) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar una palabra clave (más de tres letras) en el cuadro de busqueda", "Busqueda Vacía", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(txtBuscador.getText().length() >cantidadLetrasPermitidas){
-            JOptionPane.showMessageDialog(padre, "La busqueda puede contener hasta 30 caracteres.");
-        }else {
-            busqueda(txtBuscador.getText());
-            txtBuscador.setText("");
-        }
+        validarBusqueda();
     }//GEN-LAST:event_lblBuscarMouseClicked
-
-    private void txtBuscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyReleased
-    }//GEN-LAST:event_txtBuscadorKeyReleased
 
     private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
         padre.remove(this);
@@ -169,6 +159,24 @@ public class PnlResultadoBusqueda extends javax.swing.JPanel {
         lblVolver.setCursor(cursor);
     }//GEN-LAST:event_lblVolverMouseEntered
 
+    private void txtBuscadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            validarBusqueda();
+        }
+    }//GEN-LAST:event_txtBuscadorKeyReleased
+
+    private void validarBusqueda(){
+        int cantidadLetrasPermitidas = 30;
+        if (txtBuscador.getText().length() <= 3) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una palabra clave (más de tres letras) en el cuadro de busqueda", "Busqueda Vacía", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(txtBuscador.getText().length() >cantidadLetrasPermitidas){
+            JOptionPane.showMessageDialog(padre, "La busqueda puede contener hasta 30 caracteres.");
+        }else {
+            busqueda(txtBuscador.getText());
+            txtBuscador.setText("");
+        }
+    }
     private void busqueda(String unaPalabra) {
         pnlResultados.removeAll();
         pnlResultados.revalidate();

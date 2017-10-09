@@ -5,9 +5,7 @@ import descansoApp.dominio.ComercioActividad;
 import javax.swing.*;
 import descansoApp.dominio.Sistema;
 import descansoApp.herramientas.TipoCA;
-import descansoApp.herramientas.Utilidades;
 import java.awt.Cursor;
-import javax.swing.text.StyledEditorKit;
 
 public class PnlNuevaCiudad extends javax.swing.JPanel {
     private Sistema modelo;

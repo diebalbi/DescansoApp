@@ -3,7 +3,6 @@ package descansoApp.interfaz;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import descansoApp.dominio.Sistema;
-import java.awt.Color;
 import java.awt.Cursor;
 
 public class PResultado extends javax.swing.JPanel {

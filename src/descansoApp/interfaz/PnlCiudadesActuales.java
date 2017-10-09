@@ -7,6 +7,10 @@ import descansoApp.dominio.Sistema;
 import java.util.Collections;
 import javax.swing.JComponent;
 
+/**
+ *
+ * @author Fido
+ */
 public class PnlCiudadesActuales extends javax.swing.JPanel {
 
     private Sistema modelo;
@@ -14,6 +18,11 @@ public class PnlCiudadesActuales extends javax.swing.JPanel {
     private ArrayList<Ciudad> ciudades;
     ArrayList<String> filtros;
 
+    /**
+     *
+     * @param unModelo
+     * @param unContenedor
+     */
     public PnlCiudadesActuales(Sistema unModelo, JFrame unContenedor) {
         initComponents();
         modelo = unModelo;

@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import descansoApp.dominio.ComercioActividad;
 import descansoApp.dominio.Sistema;
-import java.awt.Color;
 import java.awt.Cursor;
 
 public class PResultadoDondeQue extends javax.swing.JPanel {

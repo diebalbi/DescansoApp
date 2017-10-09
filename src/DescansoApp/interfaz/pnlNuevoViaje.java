@@ -55,11 +55,6 @@ public class PnlNuevoViaje extends javax.swing.JPanel {
 
         txtNombre.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         txtNombre.setBorder(null);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
@@ -75,9 +70,6 @@ public class PnlNuevoViaje extends javax.swing.JPanel {
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblEliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblEliminarMouseExited(evt);
             }
         });
         add(lblEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, 30));
@@ -115,18 +107,10 @@ public class PnlNuevoViaje extends javax.swing.JPanel {
         add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void lblEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseEntered
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         lblEliminar.setCursor(cursor);
     }//GEN-LAST:event_lblEliminarMouseEntered
-
-    private void lblEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseExited
-
-    }//GEN-LAST:event_lblEliminarMouseExited
 
     private void lblEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseClicked
         int respuesta = JOptionPane.showConfirmDialog(null, "¿Desea eliminar el viaje?", "Eliminar Viaje", JOptionPane.OK_CANCEL_OPTION);
@@ -150,6 +134,7 @@ public class PnlNuevoViaje extends javax.swing.JPanel {
                 viaje.setFechaI(c);
                 viaje.setFechaF(dChooserFechaI.getCalendar(), dChooserFechaF.getCalendar());
                 if (modViaje == null) {
+                    JOptionPane.showMessageDialog(this, "Se registro el viaje "+viaje.getNombre() +" satisfactoriamente.");
                     modelo.agregarViaje(viaje);
                 }
                 miVentana.dispose();

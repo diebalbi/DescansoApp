@@ -5,7 +5,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import descansoApp.dominio.Sistema;
 import descansoApp.dominio.Viaje;
-import javax.swing.JOptionPane;
 
 public class PnlMisViajes extends javax.swing.JPanel {
 

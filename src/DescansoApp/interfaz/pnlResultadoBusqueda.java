@@ -7,6 +7,10 @@ import descansoApp.dominio.Sistema;
 import descansoApp.herramientas.Buscador;
 import java.awt.Cursor;
 
+/**
+ *
+ * @author Fido
+ */
 public class PnlResultadoBusqueda extends javax.swing.JPanel {
 
     private Sistema modelo;

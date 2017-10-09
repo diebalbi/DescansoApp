@@ -263,6 +263,7 @@ public class PnlEvento extends javax.swing.JPanel {
 
                             if (esNuevo) {
                                 viaje.agregarEvento(evento);
+                                JOptionPane.showMessageDialog(this, "Se registro el evento "+evento.getNombre() +" satisfactoriamente.");
                                 miVentana.dispose();
                             } else {
                                 miVentana.remove(this);
